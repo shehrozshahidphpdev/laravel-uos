@@ -1,0 +1,71 @@
+@use '../vars'as *;
+@use '../../mixins/flex'as *;
+
+.main {
+  .events {
+    margin-bottom: 5rem;
+
+    .container {
+      padding: 0rem 4rem;
+
+      @media (max-width: 425px) {
+        padding: 0rem 2rem;
+      }
+
+      .event__cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        height: auto;
+
+        .event__cards {
+          background-color: #f0f7ff;
+          transition: background 0.3s ease, color 0.3s ease;
+          cursor: pointer;
+          border-radius: 0px;
+          position: relative;
+          overflow: hidden;
+          border-radius: 0px !important;
+
+          &:hover {
+            background-color: #125875;
+            color: white;
+
+            img {
+              transform: scale(1.1);
+            }
+          }
+
+          img {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px 5px 0 0;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+          }
+
+          &-date {
+            position: absolute;
+            background-color: #ffc511;
+            width: 87px;
+            height: 67px;
+            left: 30px;
+            top: 150px;
+            padding: .5rem 0;
+            text-align: center;
+            color: #fff;
+            font-size: 1.3rem;
+            font-family: 'Jost', sans-serif;
+          }
+
+          &-description {
+            padding: 2rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+          }
+        }
+
+      }
+    }
+  }
+}

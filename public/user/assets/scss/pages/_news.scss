@@ -1,0 +1,50 @@
+@use './vars'as *;
+// @use '../../mixins/flex'as *;
+
+.main {
+  font-family: sans-serif;
+
+  .news {
+    padding: 8rem 3rem;
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+
+      .news-card {
+        background: $light-bg;
+        padding: 2rem;
+        text-align: start;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background: $sapphire;
+
+          .news-card__title-link {
+            color: white;
+          }
+        }
+
+        &__title-link {
+          text-decoration: none;
+          color: $dark-text;
+          display: inline-block;
+          height: 40px;
+          cursor: pointer;
+
+          .news-card__title {
+            font-size: 1.3rem;
+            font-weight: 600;
+          }
+        }
+
+        &__description {
+          color: $light-text;
+          font-size: 1.3rem;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}

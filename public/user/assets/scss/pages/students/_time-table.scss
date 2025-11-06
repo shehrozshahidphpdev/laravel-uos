@@ -1,0 +1,47 @@
+@use '../vars'as *;
+@use '../../mixins/flex'as *;
+
+.main {
+  .time-table {
+    padding: 5rem 3rem;
+
+    .container {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      .card {
+        padding: 2rem;
+        background: $light-bg;
+        transition: all 0.3s ease;
+        text-align: center;
+
+        &__caption {
+          font-weight: bold;
+          font-size: 1.5rem;
+          margin-bottom: 3rem;
+          height: 40px;
+        }
+
+        &:hover {
+          background: $sapphire;
+
+          .card__caption {
+            color: $light-bg;
+          }
+        }
+
+        &__link {
+          padding: .8rem 1.5rem;
+          background: $primary-yellow;
+          color: $light-bg;
+          font-size: 1.3rem;
+          border-radius: 5px;
+          display: inline-block;
+          margin: 0 auto;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

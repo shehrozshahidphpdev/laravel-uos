@@ -1,0 +1,133 @@
+/* Root defaults */
+:root {
+  /* Typography Scale (Major Third 1.25x) */
+  --font-size-base: 1rem;
+  /* 16px */
+  --font-size-scale: 1.25;
+
+  /* Rhythm & Layout */
+  --line-height: 1.6;
+  --max-container-width: 1400px;
+  --container-padding: 1rem;
+
+  /* Colors */
+  --color-text: #222;
+  --color-bg: #fff;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px (easy math) */
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "jost", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--font-size-base);
+  // line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Container Utility */
+.container {
+  width: 100%;
+  max-width: var(--max-container-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: calc(var(--font-size-base) * var(--font-size-scale) * var(--font-size-scale) * var(--font-size-scale));
+}
+
+h2 {
+  font-size: calc(var(--font-size-base) * var(--font-size-scale) * var(--font-size-scale));
+}
+
+h3 {
+  font-size: calc(var(--font-size-base) * var(--font-size-scale));
+}
+
+h4 {
+  font-size: calc(var(--font-size-base) * 1.125);
+}
+
+h5 {
+  font-size: var(--font-size-base);
+}
+
+h6 {
+  font-size: calc(var(--font-size-base) * 0.875);
+}
+
+// p {
+//   margin-bottom: 1em;
+//   max-width: 65ch;
+//   /* Optimal line length for readability */
+// }
+
+/* Fluid scaling: adapt typography smoothly */
+/* Slight bump for small tablets */
+@media (min-width: 480px) {
+  html {
+    font-size: 65%;
+    /* ≈ 10.4px */
+  }
+}
+
+/* Tablets and small laptops */
+@media (min-width: 768px) {
+  html {
+    font-size: 68.75%;
+    /* ≈ 11px */
+  }
+}
+
+/* Regular laptops / medium desktops */
+@media (min-width: 1024px) {
+  html {
+    font-size: 75%;
+    /* ≈ 12px */
+  }
+}
+
+/* Large desktops and monitors */
+@media (min-width: 1280px) {
+  html {
+    font-size: 81.25%;
+    /* ≈ 13px */
+  }
+}
+
+/* Extra large (big screens) */
+@media (min-width: 1536px) {
+  html {
+    font-size: 87.5%;
+    /* ≈ 14px */
+  }
+}

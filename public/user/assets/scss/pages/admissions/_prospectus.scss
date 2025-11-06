@@ -1,0 +1,44 @@
+@use '../vars'as *;
+@use '../../mixins/flex'as *;
+
+.main {
+  .prospectus {
+    padding: 8rem 4rem;
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+
+      .card {
+        background: $light-bg;
+        max-width: 300px;
+        padding: 3rem 2rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-align: center;
+
+        &:hover {
+          background: $sapphire;
+          color: $light-bg;
+        }
+
+        &__caption {
+          height: 70px;
+          text-align: start;
+        }
+
+        &__link {
+          text-align: center;
+          padding: 0.5rem 1.5rem;
+          background: #ffc107;
+          color: #f3f4f8;
+          font-size: 1.3rem;
+          border-radius: 5px;
+          text-decoration: none;
+        }
+      }
+    }
+
+  }
+}

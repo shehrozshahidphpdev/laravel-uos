@@ -1,0 +1,65 @@
+@forward 'vars.scss';
+@forward 'default.scss';
+@forward 'home.scss';
+@forward '../utility/index';
+
+// ABOUTS 
+@forward './about/about-introduction';
+@forward './about/about-cancellor-message';
+@forward './about/about-vice-chancellor-message';
+@forward './about/about-newsletter';
+@forward './about/about-events';
+@forward './about/about-news';
+
+// ADMINISTRATIONS 
+@forward './administration/vc-office';
+@forward './administration/registrar';
+@forward './administration/treasure';
+@forward './administration/controller';
+
+// FACULTIES
+@forward './faculties/computer-science';
+@forward './faculties/ba';
+@forward './faculties/commerce';
+@forward './faculties/economics';
+@forward './faculties/english';
+@forward './faculties/law';
+@forward './faculties/fee-structure';
+
+
+// DIRECTORATES
+@forward './directorates/academics';
+
+// CHAIRMANS 
+@forward './chairman/computer-science';
+
+// ALL FACULTIES
+@forward './allfaculties/computer-science';
+
+// CONTACT US
+@forward './contact-us';
+
+// MERIT LIST
+@forward './merit-list';
+
+// DOWNLOADS
+@forward './downloads/forms';
+
+// NEWS
+@forward './news';
+
+// STUDENTS MODUKE
+@forward './students/time-table';
+@forward './students/library';
+@forward './students/scholarships';
+@forward './students/transportation';
+@forward './students/hostel';
+@forward './students/sports.scss';
+@forward './students/regional-plan';
+@forward './students/digital-learning';
+
+//AADMISSIONS 
+
+@forward './admissions/prospectus';
+@forward './admissions/how-to-apply';
+// @forward './students/time-table';

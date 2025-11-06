@@ -1,0 +1,13 @@
+.online-badge {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #008000;
+  bottom: 0;
+  right: 100px;
+}
+
+.profile {
+  position: relative;
+}

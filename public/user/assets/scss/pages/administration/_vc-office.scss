@@ -1,0 +1,59 @@
+@use '../vars'as *;
+@use '../../mixins/flex'as *;
+
+.main {
+  .vc {
+    padding: 4rem 3rem;
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+
+      .profile {
+        height: 260px;
+        width: auto;
+        max-width: 100%;
+        border: 7px solid white;
+        border-radius: 5px;
+
+        a {
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+
+      .bio {
+        border-radius: 5px;
+        color: #777777;
+        padding: 2rem;
+        background: #f5f5f5;
+        flex-basis: 45%;
+
+        .name {
+          color: #008000;
+          font-size: 2rem;
+        }
+
+        .designation {
+          min-height: 90px;
+          font-size: 1.3rem;
+          font-weight: bold;
+        }
+
+        .contact {
+          display: flex;
+          gap: 2rem;
+          align-items: center;
+          font-size: 1.3rem;
+
+          i {
+            color: $primary-yellow;
+          }
+        }
+      }
+    }
+  }
+}

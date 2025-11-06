@@ -1,0 +1,75 @@
+@use 'vars'as *;
+
+.main {
+  .time-table {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-align: start;
+      max-width: 100%;
+
+      .title {
+        font-size: 3rem;
+
+      }
+
+      .table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 3rem;
+
+        .table {
+          font-family: sans-serif;
+          width: 100%;
+          border-collapse: collapse;
+          text-align: left;
+          vertical-align: top;
+
+          .table-head {
+            background-color: #ffc511;
+            border: 1px solid #dee2e6;
+          }
+
+          th {
+            color: $dark-text;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-bottom-width: 2px; // ✅ Slightly thicker bottom border for header
+          }
+
+          .body {
+            border: 1px solid #dee2e6;
+
+            tr {
+              .program {
+                color: $dark-text;
+                font-size: 1.2rem;
+                font-weight: 600;
+                ;
+              }
+            }
+          }
+
+          td {
+            a {
+              text-decoration: none;
+              color: $dark-text;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: $primary-yellow;
+              }
+            }
+          }
+
+          th,
+          td {
+            border: 1px solid #dee2e6; // ✅ Same border color as Bootstrap
+            padding: 0.5rem; // optional, Bootstrap-like padding
+            vertical-align: top;
+          }
+        }
+      }
+    }
+  }
+}
