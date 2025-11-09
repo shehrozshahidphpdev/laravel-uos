@@ -4,6 +4,8 @@
   'media' => false,
   'id' => '#'
 ])
+
+
 <form
   action="{{ $action }}"
   method="{{ in_array($method, ['GET', 'POST']) ? $method : 'POST' }}"

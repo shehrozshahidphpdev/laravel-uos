@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\NewsController;
 
 // USER SIDE ROUTES
 Route::get('/', [HomeController::class, 'index'])
@@ -37,18 +38,41 @@ Route::prefix('admin/')->name('admin.')->group(function () {
     ->name('getProfile');
   Route::post('profile', [AuthController::class, 'editProfile'])
     ->name('edit-profile');
-  Route::get('departments', [DepartmentController::class, 'index'])
-    ->name('departments');
-  Route::get('depratment/create', [DepartmentController::class, 'create'])
-    ->name('departments.create');
-  Route::post('department/store', [DepartmentController::class, 'store'])
-    ->name('departments.store');
-  Route::delete('department/delete/{id}', [DepartmentController::class, 'delete'])
-    ->name('department.delete');
 
-  Route::get('department/edit/{id}', [DepartmentController::class, 'edit'])
-    ->name('department.edit');
+  // DEPARTMENT ROUTES
+  Route::controller(DepartmentController::class)->group(function () {
+    Route::get('departments',  'index')
+      ->name('departments');
+    Route::get('depratment/create',  'create')
+      ->name('departments.create');
+    Route::post('department/store',  'store')
+      ->name('departments.store');
+    Route::delete('department/delete/{id}',  'delete')
+      ->name('department.delete');
 
-  Route::put('department/update/{id}', [DepartmentController::class, 'update'])
-    ->name('department.update');
+    Route::get('department/edit/{id}',  'edit')
+      ->name('department.edit');
+
+    Route::put('department/update/{id}',  'update')
+      ->name('department.update');
+  });
+
+
+  // NEWS ROUTES
+  Route::controller(NewsController::class)->group(function () {
+    Route::get('news',  'index')
+      ->name('news');
+    Route::get('news/create',  'create')
+      ->name('news.create');
+    Route::post('news/store',  'store')
+      ->name('news.store');
+    Route::delete('news/delete/{id}',  'delete')
+      ->name('news.delete');
+
+    Route::get('news/edit/{id}',  'edit')
+      ->name('news.edit');
+
+    Route::put('news/update/{id}',  'update')
+      ->name('news.update');
+  });
 });

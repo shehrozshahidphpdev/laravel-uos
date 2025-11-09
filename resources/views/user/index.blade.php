@@ -135,15 +135,18 @@
 
       <div class="swiper news-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide news-card">
-            <div class="news-card-content">
-              <h1 class="news-title">Extension of Fee Submission</h1>
-              <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
-              <span class="news-title-link">
-                <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
-                </a></span>
+          @foreach ($allNews as $news)
+            <div class="swiper-slide news-card">
+              <div class="news-card-content">
+                <h1 class="news-title">Run By Loop</h1>
+                <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
+                <span class="news-title-link">
+                  <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
+                  </a></span>
+              </div>
             </div>
-          </div>
+          @endforeach
+
           <div class="swiper-slide news-card">
             <div class="news-card-content">
               <h1 class="news-title">Extension of Fee Submission</h1>
@@ -232,174 +235,6 @@
             </div>
           </article>
         @endforeach
-
-        {{-- <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\cs-322a (1).jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Business Administration
-            </p>
-            <p class="department__card-content-description">
-              BBA (4 Years)
-              BBIS (4 Years)
-              EMBA (Executive) (2 Years)
-              MS Business Administration
-              PhD Business Administration
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\englash-22.jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Chemistry
-            </p>
-            <p class="department__card-content-description">
-              BS Chemistry (4 Years)
-              BS Applied Chemistry (4 Years)
-              MPhil Chemistry
-              PhD Chemistry
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\stat (1).jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Commerce
-            </p>
-            <p class="department__card-content-description">
-              BS Commerce (4 Years)
-              BS Accounting & Finance (4 Years)
-              BS Banking & Finance (4 Years)
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\cs-322a.jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Computer Science
-            </p>
-            <p class="department__card-content-description">
-              BS Computer Science
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\stat (1).jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Economics
-            </p>
-            <p class="department__card-content-description">
-              BS Economics (4 Years)
-              MPhil Economics
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\englash-22.jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              English
-            </p>
-            <p class="department__card-content-description">
-              BS English (4 Years)
-              MPhil English
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\lwa-321.jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Law
-            </p>
-            <p class="department__card-content-description">
-              LLB (5 Years) <br>
-              LLM
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\\psychology-11jpg.jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Mathematics
-            </p>
-            <p class="department__card-content-description">
-              BS Mathematics (4 Years)
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\chemistry-32.jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Physics
-            </p>
-            <p class="department__card-content-description">
-              BS Physics (4 Years)
-              BS Electronics (4 Years)
-              MPhil Physics
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article> --}}
       </div>
     </div>
   </section>

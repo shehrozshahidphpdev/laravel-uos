@@ -55,20 +55,7 @@ class DepartmentController extends Controller
     // dd($request->file('image'));
   }
 
-  public function delete(Request $request)
-  {
-    $department = Department::findOrFail($request->id);
 
-    try {
-      $department->delete();
-      return response()->json([
-        'message' => 'Department Deleted Successfully!',
-      ], 200);
-    } catch (\Exception $e) {
-      Log::error("Failed To Delete" . $e->getMessage());
-      return response()->json([]);
-    }
-  }
 
   public function edit(string $id)
   {
@@ -122,6 +109,21 @@ class DepartmentController extends Controller
       Log::error("Entry Failed " . $e->getMessage());
       return redirect()->back()
         ->with('message', "Something, went wrong Please Try Again Later");
+    }
+  }
+
+  public function delete(Request $request)
+  {
+    $department = Department::findOrFail($request->id);
+
+    try {
+      $department->delete();
+      return response()->json([
+        'message' => 'Department Deleted Successfully!',
+      ], 200);
+    } catch (\Exception $e) {
+      Log::error("Failed To Delete" . $e->getMessage());
+      return response()->json([]);
     }
   }
 }

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable
 {
   /** @use HasFactory<\Database\Factories\UserFactory> */
   use HasFactory, Notifiable;
@@ -42,14 +42,9 @@ class User extends Authenticatable implements JWTSubject
       'password' => 'hashed',
     ];
   }
-  public function getJWTIdentifier()
-  {
-    return $this->getKey();
-  }
 
-  public function getJWTCustomClaims()
+  public function news()
   {
-    // Add any custom claims such as role if you want
-    return [];
+    return $this->hasMany(News::class);
   }
 }

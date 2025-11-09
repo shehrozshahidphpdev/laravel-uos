@@ -13,4 +13,9 @@ class News extends Model
   protected $casts = [
     'additional_info' => 'array'
   ];
+
+  public function user()
+  {
+    return $this->hasOne(User::class);
+  }
 }

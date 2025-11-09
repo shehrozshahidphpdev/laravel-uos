@@ -34,6 +34,13 @@
             <p>Depratments</p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="{{ route('admin.news') }}" class="nav-link">
+            <i class="fa-solid fa-newspaper"></i>
+            <p>News</p>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon bi bi-box-seam-fill"></i>
