@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Exception;
 use App\Models\Admin\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -107,6 +109,33 @@ class AuthController extends Controller
 
   public function editProfile(Request $request)
   {
-    $id = $request->id;
+    $validations = $request->validate([
+      'first_name' => 'required|string|max:255|min:3',
+      'last_name' => 'required|string|max:255|min:3',
+      // ignore the email uniqueness for the current user
+      'email' => 'required|email|unique:users,email,' . $request->id,
+      'password' => 'required|min:6',
+    ]);
+
+    try {
+      $profile = User::findOrFail($request->id);
+
+      $profile->update([
+        'first_name' => $request->first_name,
+        'last_name' => $request->last_name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password)
+      ]);
+
+      return response()->json([
+        'message' => 'Profile Updated Successfully!',
+        'user' => Auth::user()->first_name
+      ], 200);
+    } catch (Exception $e) {
+      Log::error($e->getMessage());
+      return response()->json([
+        'message' => 'Sorry, something went wrong. Please Try Again Later',
+      ], 500);
+    }
   }
 }

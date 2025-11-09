@@ -207,26 +207,33 @@
         <h1 class="department__header-maintitle">Departments</h1>
       </div>
       <div class="department__cards-container">
-        <article class="department__card">
-          <div class="department__card-header">
-            <img src="public\assets\imgs\department\chemistry-32.jpg" class="" alt="" />
-          </div>
-          <div class="department__card-content">
-            <p class="department__card-content-title">
-              Applied Psychology
-            </p>
-            <p class="department__card-content-description">
-              BS Applied Psychology (4 Years)
-              ADCP (1 Year)
-              MS Clinical Psychology
-            </p>
-            <span class="department__card-content-footer">
-              <a href="">Detail</a>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
-          </div>
-        </article>
-        <article class="department__card">
+        @foreach ($departments as $department)
+          <article class="department__card">
+            <div class="department__card-header">
+              <img src="{{ asset('storage/admin/uploads/' . $department->image) }}" class="" alt="" />
+            </div>
+            <div class="department__card-content">
+              <p class="department__card-content-title">
+                {{ $department->dept_name }}
+              </p>
+              <p class="department__card-content-description">
+                @foreach ($department->offered_courses as $course)
+                  {{ $course }}
+                  <br>
+                @endforeach
+                {{-- BS Applied Psychology (4 Years)
+                ADCP (1 Year)
+                MS Clinical Psychology --}}
+              </p>
+              <span class="department__card-content-footer">
+                <a href="">Detail</a>
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </article>
+        @endforeach
+
+        {{-- <article class="department__card">
           <div class="department__card-header">
             <img src="public\assets\imgs\department\\cs-322a (1).jpg" class="" alt="" />
           </div>
@@ -392,7 +399,7 @@
               <i class="fa-solid fa-arrow-right"></i>
             </span>
           </div>
-        </article>
+        </article> --}}
       </div>
     </div>
   </section>

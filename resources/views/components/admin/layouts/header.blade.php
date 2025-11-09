@@ -65,19 +65,28 @@
 
       <!--begin::User Menu Dropdown-->
       <li class="nav-item dropdown user-menu">
-        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-          <img src="{{ asset('backend/assets/images/dummy.png') }}" class="user-image rounded-circle shadow profile"
-            alt="User Image" />
-          <span class="online-badge"></span>
+        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+          <div class="position-relative">
+            <img src="{{ asset('backend/assets/images/dummy.png') }}" class="user-image rounded-circle shadow profile"
+              alt="User Image" />
+            <span class="online-badge"></span>
+          </div>
+          <span class="d-none d-md-inline ms-2 fw-semibold" id="user_name">
+            {{ 'Welcome ' . auth()->user()->first_name }}
+            {{-- Rendered by AJAX --}}
 
-          <span class="d-none d-md-inline">{{ 'Welcome ' . auth()->user()->first_name }}</span>
+          </span>
         </a>
+
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
           <!--begin::User Image-->
           <li class="user-header text-bg-primary">
             <img src="{{ asset('backend/assets/images/dummy.png') }}" class="rounded-circle shadow " alt="User Image" />
             <p>
-              {{ auth()->user()->first_name }}
+              <span id="card_user_name">
+                {{ auth()->user()->first_name ?? "Guest" }}
+                {{-- render by ajax --}}
+              </span>
               <small>{{ 'Member Since: ' . auth()->user()->created_at->format('Y-m-d') }}</small>
             </p>
           </li>

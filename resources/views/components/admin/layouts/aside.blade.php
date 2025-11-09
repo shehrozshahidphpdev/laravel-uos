@@ -23,8 +23,15 @@
 
         <li class="nav-item">
           <a href="{{ route('admin.profile') }}" class="nav-link">
-            <i class="fa-solid fa-user"></i>
-            <p>User Profile</p>
+            <i class="fa-solid fa-home"></i>
+            <p>Home</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{ route('admin.departments') }}" class="nav-link">
+            <i class="fa-solid fa-newspaper"></i>
+            <p>Depratments</p>
           </a>
         </li>
         <li class="nav-item">

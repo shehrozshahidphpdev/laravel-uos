@@ -28,7 +28,7 @@
       {{-- main body cntent goes here --}}
       <!--begin::Row-->
       <div class="row justify-content-center">
-        <div class="row col-md-8">
+        <div class="row col-md-10">
           <!--begin::Quick Example-->
           <div class="card card-primary card-outline mb-4">
             <!--begin::Header-->
@@ -37,28 +37,33 @@
             </div>
             <!--end::Header-->
             <!--begin::Form-->
-            <x-base-form id="profileForm">
+            <x-base-form action="{{ route('admin.getProfile') }}" id="profileForm">
               <!--begin::Body-->
               <input type="hidden" id="editId" value="">
               <div class="card-body">
-                <div class="mb-3">
-                  <label for="first_name" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="first_name" value="" />
-                </div>
+                <div class="row">
 
-                <div class="mb-3">
-                  <label for="last_name" class="form-label">Last Name</label>
-                  <input type="text" class="form-control" id="last_name" value="" />
-                </div>
+                  <div class="mb-3 col">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="first_name" value="" />
+                  </div>
 
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="email" value="email" />
-                </div>
+                  <div class="mb-3 col">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" value="" />
+                  </div>
 
-                <div class="mb-3">
-                  <label for="password" class="form-label">New Password</label>
-                  <input type="password" class="form-control" id="password" />
+                </div>
+                <div class="row">
+                  <div class="mb-3 col">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" value="email" />
+                  </div>
+
+                  <div class="mb-3 col">
+                    <label for="password" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="password" />
+                  </div>
                 </div>
               </div>
               <div class="card-footer">
@@ -85,7 +90,6 @@
         });
         function loadProfile() {
           let action = "{{ route('admin.getProfile') }}";
-
           $.ajax({
             url: action,
             dataType: 'json',
@@ -102,23 +106,30 @@
         $('#profileForm').on('submit', function (e) {
           e.preventDefault();
           let action = "{{ route('admin.edit-profile') }}";
-          console.log(action);
           $.ajax({
             url: action,
             type: 'post',
             dataType: 'json',
             data: {
-              id:
-                first_name: $('#first_name').val(),
+              id: $('#editId').val(),
+              first_name: $('#first_name').val(),
               last_name: $('#last_name').val(),
               email: $('#email').val(),
               password: $('#password').val()
             },
             success: function (res) {
-              console.log(res);
+              // render content on the header
+              $('#user_name').text('Welcome ' + res.user);
+              $('#card_user_name').text(res.user);
+
+              toastr.success(res.message);
+              loadProfile();
             },
             error: function (xhr) {
-              console.log(xhr);
+              if (xhr.status === 500) {
+                console.log(xhr.responseJSON.message);
+              }
+              toastr.error(xhr.message);
             }
           })
         });

@@ -4,14 +4,11 @@
   'media' => false,
   'id' => '#'
 ])
-
-
-
 <form
   action="{{ $action }}"
   method="{{ in_array($method, ['GET', 'POST']) ? $method : 'POST' }}"
 @if($media) enctype="multipart/form-data" @endif
- id="{{ $id }}">
+ id="{{ $id }}" {{ $attributes }}>
   @csrf
 
   @if(!in_array($method, ['GET', 'POST']))
