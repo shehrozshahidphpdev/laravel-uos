@@ -41,6 +41,13 @@
             <p>News</p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="{{ route('admin.settings') }}" class="nav-link">
+            <i class="fa-solid fa-gear"></i>
+            <p>Settings</p>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon bi bi-box-seam-fill"></i>

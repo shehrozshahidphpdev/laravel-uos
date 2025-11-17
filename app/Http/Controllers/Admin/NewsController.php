@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
@@ -15,61 +16,149 @@ class NewsController extends Controller
   {
     $news = News::where('is_active',  '=', 1)
       ->get();
+    $breadcrumbs = [
+      [
+        'label' => 'News'
+      ]
+    ];
     // dd($news);
 
     return view(
       'admin.news.list',
-      ['allNews' => $news]
+      ['allNews' => $news, 'breadcrumbs' => $breadcrumbs]
     );
   }
 
   public function create()
   {
+    $breadcrumbs = [];
+    $breadcrumbs = [
+      [
+        'label' => 'News',
+        'url' => route('admin.news')
+      ],
+      [
+        'label' => 'Create'
+      ]
+    ];
     return view(
-      'admin.news.create'
+      'admin.news.create',
+      ['breadCrumbs' => $breadcrumbs]
     );
   }
 
   public function store(Request $request)
   {
-    $request['slug'] = Str::slug($request->title);
-    // dd($request->all());
+    // Auto-create slug
+    $request->merge([
+      'slug' => Str::slug($request->title)
+    ]);
 
-    $validations = $request->validate([
+    $request->validate([
       'title' => 'required|min:5',
       'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
-      'description' => 'required|min:5|max:255',
-      'slug' => 'required|unique:news,slug'
+      'slug' => 'required|unique:news,slug',
+      // no images.* validation required when using tinymce-upload
     ]);
 
     try {
+      $imageName = null;
       if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time() . '_' .  $image->getClientOriginalName();
-        $destination = "admin/uploads/";
-        // Store the file with your custom name:
-        $image->storeAs($destination, $imageName, 'public');
+        $file = $request->file('image');
+        $imageName = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('admin/uploads', $imageName, 'public');
       }
+
+      // description already contains <img src="..."> with public URLs
+      $description = $request->description ?? '';
 
       News::create([
         'title' => $request->title,
-        'image' => $imageName ?? null,
-        'description' => $request->description,
-        'additional_info' => $request->additional_info,
-        'created_by' => Auth::user()->id,
-        'slug' => Str::slug($request->title)
+        'image' => $imageName,
+        'description' => $description,
+        'created_by' => Auth::id(),
+        'slug' => $request->slug
       ]);
 
-      return to_route('admin.news')
+      return redirect()
+        ->route('admin.news')
         ->with('message', 'News Created Successfully!');
     } catch (\Exception $e) {
-      Log::error("Entry Failed " . $e->getMessage());
-      return redirect()->back()
-        ->with('message', "Something, went wrong Please Try Again Later");
+      Log::error("Entry Failed: " . $e->getMessage());
+      return back()->with('message', "Something went wrong. Please try again.");
     }
   }
-  public function edit() {}
-  public function update() {}
+
+
+  public function edit(string $id)
+  {
+    $breadcrumbs = [];
+    $breadcrumbs = [
+      [
+        'label' => 'News',
+        'url' => route('admin.news')
+      ],
+      [
+        'label' => 'Edit'
+      ]
+    ];
+    $news = News::where('id', $id)->first();
+    return view(
+      'admin.news.edit',
+      compact('news'),
+      ['breadCrumbs' => $breadcrumbs]
+    );
+  }
+  public function update(Request $request, string $id)
+  {
+    // Auto-create slug
+    $request->merge([
+      'slug' => Str::slug($request->title)
+    ]);
+
+    $request->validate([
+      'title' => 'required|min:5',
+      'image' => 'nullable|mimes:png,jpg,jpeg,webp|max:2048',
+      'slug' => 'required|unique:news,slug,' . $id,
+
+      // no images.* validation required when using tinymce-upload
+    ]);
+
+    try {
+      $imageName = null;
+
+      $news = News::findOrFail($id);
+      $imageName =  $news->image;
+
+      if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $imageName = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('admin/uploads', $imageName, 'public');
+        $oldFile = storage_path('app/public/admin/uploads/' . $news->image);
+        if (file_exists($oldFile)) {
+          @unlink($oldFile);
+        }
+      }
+
+      // description already contains <img src="..."> with public URLs
+      $description = $request->description ?? '';
+
+      News::where('id', $id)->update([
+        'title' => $request->title,
+        'image' => $imageName,
+        'description' => $description,
+        'created_by' => Auth::id(),
+        'slug' => $request->slug
+      ]);
+
+      return redirect()
+        ->route('admin.news')
+        ->with('message', 'News Updated Successfully!');
+    } catch (\Exception $e) {
+      Log::error("Entry Failed: " . $e->getMessage());
+      return back()->with('message', "Something went wrong. Please try again.");
+    }
+  }
   public function delete(Request $request)
   {
     $department = News::findOrFail($request->id);

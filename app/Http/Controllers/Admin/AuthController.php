@@ -92,10 +92,15 @@ class AuthController extends Controller
   }
   public function profile()
   {
-    // $id = Auth::user()->id;
-    // $currentUser = User::find($id);
-    // $currentUser = json_encode($currentUser);
-    return view('admin.profile',);
+    $breadCrumbs = [
+      [
+        'label' => 'Profile'
+      ]
+    ];
+    return view(
+      'admin.profile',
+      ['breadCrumbs' => $breadCrumbs]
+    );
   }
 
   public function getProfile()

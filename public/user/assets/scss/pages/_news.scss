@@ -1,48 +1,54 @@
 @use './vars'as *;
-// @use '../../mixins/flex'as *;
 
 .main {
   font-family: sans-serif;
 
   .news {
-    padding: 8rem 3rem;
+    padding: 8rem 6rem;
 
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
 
-      .news-card {
+      .news__card {
         background: $light-bg;
         padding: 2rem;
         text-align: start;
-        transition: all 0.3s ease-in-out;
+        border-radius: 6px;
+        transition: all 0.3s ease;
 
         &:hover {
           background: $sapphire;
 
-          .news-card__title-link {
-            color: white;
+          .news__card-title a {
+            color: $light-bg !important;
+          }
+
+          .event__card-description p {
+            color: $light-bg;
           }
         }
 
-        &__title-link {
-          text-decoration: none;
-          color: $dark-text;
-          display: inline-block;
-          height: 40px;
-          cursor: pointer;
-
-          .news-card__title {
-            font-size: 1.3rem;
-            font-weight: 600;
-          }
-        }
-
-        &__description {
-          color: $light-text;
+        .news__card-title {
           font-size: 1.3rem;
-          line-height: 1.6;
+          font-weight: 600;
+          margin-bottom: 1rem;
+
+          a {
+            text-decoration: none;
+            color: $dark-text;
+            transition: color 0.3s ease;
+          }
+        }
+
+        .event__card-description {
+          p {
+            color: $dark-text;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+          }
         }
       }
     }

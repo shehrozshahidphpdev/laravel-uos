@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class Auth
+class IsAuthenticated
 {
   /**
    * Handle an incoming request.
@@ -15,18 +16,10 @@ class Auth
    */
   public function handle(Request $request, Closure $next): Response
   {
-
-    $user = auth('api')->user();
-
-    if (!$user) {
-      if ($request->expectsJson()) {
-        return response()->json([
-          'status' => 401,
-          'message' => 'Unauthorized'
-        ]);
-      }
-      return to_route('api.auth.login');
+    if (!Auth::check()) {
+      return to_route('auth.login');
     }
+    // dd('middleware is working');
     return $next($request);
   }
 }

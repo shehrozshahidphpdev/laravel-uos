@@ -19,44 +19,37 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 // news cards swiper script
-var newsSwiper = new Swiper(".news-swiper", {
-  slidesPerView: 1,
-  spaceBetween: 10,
-  loop: true, // 🔁 Infinite scroll
-  speed: 800, // Smooth transition speed
-  autoplay: {
-    delay: 2500, // Auto slide every 2.5s
-    disableOnInteraction: false, // Keeps autoplay running after clicks
-  },
-  navigation: {
-    nextEl: ".news-btns-group button:last-child",
-    prevEl: ".news-btns-group button:first-child",
-  },
-  breakpoints: {
-    640: {
-      slidesPerView: 2,
-      spaceBetween: 20,
+document.addEventListener("DOMContentLoaded", function () {
+  var newsSwiper = new Swiper(".news-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    loop: true,
+    speed: 800,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
     },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 25,
+    navigation: {
+      nextEl: ".news-btns-group button:last-child",
+      prevEl: ".news-btns-group button:first-child",
     },
-    1024: {
-      slidesPerView: 4,
-      spaceBetween: 30,
+    breakpoints: {
+      640: { slidesPerView: 2, spaceBetween: 20 },
+      768: { slidesPerView: 3, spaceBetween: 25 },
+      1024: { slidesPerView: 4, spaceBetween: 30 },
     },
-  },
-});
+  });
 
-// 🖱️ Pause autoplay when hovering
-const swiperContainer = document.querySelector(".news-swiper");
+  // Pause on hover
+  const swiperContainer = document.querySelector(".news-swiper");
 
-swiperContainer.addEventListener("mouseenter", () => {
-  newsSwiper.autoplay.stop();
-});
+  swiperContainer.addEventListener("mouseenter", () => {
+    newsSwiper.autoplay.stop();
+  });
 
-swiperContainer.addEventListener("mouseleave", () => {
-  newsSwiper.autoplay.start();
+  swiperContainer.addEventListener("mouseleave", () => {
+    newsSwiper.autoplay.start();
+  });
 });
 
 // jquery code goes here

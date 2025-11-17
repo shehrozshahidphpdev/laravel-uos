@@ -6,11 +6,13 @@
   color: #fff;
   background-position: center top;
   position: relative;
+  object-fit: cover;
 
   .container {
     padding: 6rem 2rem;
     display: flex;
     justify-content: center;
+    height: 300px;
     align-items: center;
 
     .title {
@@ -46,6 +48,12 @@
       font-size: 1.4rem;
       color: white;
       position: relative;
+
+
+      a {
+        text-decoration: none;
+        color: $light-bg;
+      }
 
       &:not(:last-child)::after {
         content: "›";
@@ -203,6 +211,7 @@
 
       li {
         font-size: 1.2rem;
+
       }
     }
   }

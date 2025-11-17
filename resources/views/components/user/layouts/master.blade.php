@@ -1,3 +1,4 @@
+@props(['settings'])
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,20 +27,24 @@
     rel="stylesheet">
   <!-- SWIPER JS CDN  -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="{{ asset('user/assets/css/app.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  {{-- public\assets\css\app.css from heres is getting the css --}}
+  <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
   @stack('styles')
 </head>
 
 <body>
-  <x-user.layouts.mini-header />
-  <x-user.layouts.main-header />
+  <x-user.layouts.mini-header :settings="$settings" />
+  <x-user.layouts.main-header :settings="$settings" />
   <main>
     {{ $slot }}
   </main>
-  <x-user.layouts.footer />
+  <x-user.layouts.footer :settings="$settings" />
   <!-- SWIPER JS SCRIPT LINK -->
   <script src=" https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <script src="{{ asset('user/assets/js/index.js') }}"></script>
+
   @stack('scripts')
 </body>
 

@@ -1,3 +1,4 @@
+@props(['settings'])
 <!--top  header code -->
 <header class="header" id="top">
   <div class="container">
@@ -31,7 +32,7 @@
             Call Now !
           </div>
           <div class="contacts__call--phone">
-            +92-654-54272765
+            {{ $settings->phone_no }}
           </div>
         </div>
       </div>
@@ -45,7 +46,7 @@
             Email Now!
           </div>
           <div class="contacts__email--phone">
-            info@uosahiwal.edu.pk
+            {{ $settings->email }}
           </div>
         </div>
       </div>

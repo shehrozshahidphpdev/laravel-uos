@@ -72,7 +72,9 @@
             <span class="online-badge"></span>
           </div>
           <span class="d-none d-md-inline ms-2 fw-semibold" id="user_name">
-            {{ 'Welcome ' . auth()->user()->first_name }}
+            @if(auth()->check())
+              {{ 'Welcome ' . auth()->user()->first_name}}
+            @endif
             {{-- Rendered by AJAX --}}
 
           </span>
@@ -84,10 +86,14 @@
             <img src="{{ asset('backend/assets/images/dummy.png') }}" class="rounded-circle shadow " alt="User Image" />
             <p>
               <span id="card_user_name">
-                {{ auth()->user()->first_name ?? "Guest" }}
+                @if(auth()->check())
+                  {{ auth()->user()->first_name }}
+                @endif
                 {{-- render by ajax --}}
               </span>
-              <small>{{ 'Member Since: ' . auth()->user()->created_at->format('Y-m-d') }}</small>
+              @if(auth()->check())
+                <small>{{ 'Member Since: ' . auth()->user()->created_at->format('Y-m-d') }}</small>
+              @endif
             </p>
           </li>
           <!--end::User Image-->

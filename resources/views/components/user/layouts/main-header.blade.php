@@ -1,10 +1,11 @@
+@props(['settings'])
 <!-- main navbar header -->
 <header class="navbar">
   <div class="container">
     <!-- main logo -->
     <div class="logo">
       <a href="/">
-        <img src="{{ asset('user/assets/images/logo.png') }}" alt="logo">
+        <img src="{{ asset('storage/admin/uploads/' . $settings->logo) }}" alt="logo">
       </a>
     </div>
     <!-- hamburger icon -->
@@ -255,6 +256,9 @@
         </li>
         <li class="navigation__item"><a href="contact-us.html">Contact Us</a>
         </li>
+        {{-- signle news --}}
+        {{-- <li class="navigation__item"><a href="{{ route('user.single-news') }}">Single News</a>
+        </li> --}}
       </ul>
     </nav>
   </div>

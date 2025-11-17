@@ -1,4 +1,5 @@
-<x-user.layouts.master>
+@props(['settings'])
+<x-user.layouts.master :settings="$settings">
   <x-slot:title>
     Home Page
   </x-slot:title>
@@ -77,11 +78,10 @@
     <div class="container">
       <div class="chancellor__profile">
         <div class="chancellor__profile-pic">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYA4yTn5sczM4j6psN48F0zJk8zELz2nT4A&s"
-            alt="">
+          <img src="{{ asset('backend/assets/images/dummy.png') }}" alt="">
         </div>
         <div class="chancellor__profile-description">
-          <p class="name">PROF. DR James Daniel</p>
+          <p class="name">PROF. DR XYZ</p>
           <p class="designation">Vice Chancellor</p>
           <p class="University of Sahiwal">
             University of Sahiwal
@@ -138,65 +138,20 @@
           @foreach ($allNews as $news)
             <div class="swiper-slide news-card">
               <div class="news-card-content">
-                <h1 class="news-title">Run By Loop</h1>
-                <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
+                <h1 class="news-title">{{ $news->title }}</h1>
+                <p>{{ Str::limit(strip_tags($news->description), 50) }}</p>
                 <span class="news-title-link">
-                  <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
+                  <a href="{{ route('user.show-news', $news->slug) }}">Click Here <i class="fa-solid fa-arrow-right"></i>
                   </a></span>
               </div>
             </div>
           @endforeach
 
-          <div class="swiper-slide news-card">
-            <div class="news-card-content">
-              <h1 class="news-title">Extension of Fee Submission</h1>
-              <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
-              <span class="news-title-link">
-                <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
-                </a></span>
-            </div>
-          </div>
-          <div class="swiper-slide news-card">
-            <div class="news-card-content">
-              <h1 class="news-title">Extension of Fee Submission</h1>
-              <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
-              <span class="news-title-link">
-                <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
-                </a></span>
-            </div>
-          </div>
-          <div class="swiper-slide news-card">
-            <div class="news-card-content">
-              <h1 class="news-title">Extension of Fee Submission</h1>
-              <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
-              <span class="news-title-link">
-                <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
-                </a></span>
-            </div>
-          </div>
-          <div class="swiper-slide news-card">
-            <div class="news-card-content">
-              <h1 class="news-title">Extension of Fee Submission</h1>
-              <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
-              <span class="news-title-link">
-                <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
-                </a></span>
-            </div>
-          </div>
-          <div class="swiper-slide news-card">
-            <div class="news-card-content">
-              <h1 class="news-title">Extension of Fee Submission</h1>
-              <p>Extension of fee submission for 3rd, 5th and 9th semester</p>
-              <span class="news-title-link">
-                <a href="">Click Here <i class="fa-solid fa-arrow-right"></i>
-                </a></span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <div class="news-button">
-      <a href="#" class="all-news">
+      <a href="{{ route('user.news') }}" class="all-news">
         All News <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>

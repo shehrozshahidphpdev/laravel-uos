@@ -1,78 +1,115 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\EditorController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\User\NewsController as userNews;
 
 // USER SIDE ROUTES
-Route::get('/', [HomeController::class, 'index'])
-  ->name('home');
-
-
-
-// Auth Routes
-Route::prefix('admin/')->name('auth.')->group(function () {
-  Route::get('login', [AuthController::class, 'viewLogin'])
-    ->name('login')
-    ->withoutMiddleware(['auth']);
-  Route::get('register', [AuthController::class, 'viewRegister'])
-    ->name('register')
-    ->withoutMiddleware(['auth']);
-  Route::post('register', [AuthController::class, 'attemptRegister'])
-    ->name('attempt-register');
-  Route::post('login', [AuthController::class, 'attemptLogin'])
-    ->name('attempt-login');
-  Route::get('logout', [AuthController::class, 'logout'])
-    ->name('logout');
+Route::name('user.')->group(function () {
+  Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
+  Route::get('news/{slug}', [userNews::class, 'showNews'])
+    ->name('show-news');
+  Route::get('news', [userNews::class, 'news'])->name('news');
 });
+// Auth Routes
+Route::prefix('admin/')
+  ->controller(AuthController::class)
+  ->name('auth.')
+  ->middleware(['authenticated'])
+  ->group(function () {
+    Route::get('login',  'viewLogin')
+      ->name('login')
+      ->withoutMiddleware(['auth']);
+    Route::get('register',  'viewRegister')
+      ->name('register')
+      ->withoutMiddleware(['auth']);
+    Route::post('register',  'attemptRegister')
+      ->name('attempt-register');
+    Route::post('login',  'attemptLogin')
+      ->name('attempt-login');
+    Route::get('logout',  'logout')
+      ->name('logout')->withoutMiddleware(['authenticated']);
+  });
+// tiny mce images upload route
+Route::post('/tinymce-upload', [EditorController::class, 'upload'])
+  ->name('tinymce.upload');
 
 // Admin Dashboard Rouetes
-Route::prefix('admin/')->name('admin.')->group(function () {
-  Route::view('', 'admin.index')
-    ->name('dashboard');
-  Route::get('profile', [AuthController::class, 'profile'])
-    ->name('profile');
-  Route::get('getProfile', [AuthController::class, 'getProfile'])
-    ->name('getProfile');
-  Route::post('profile', [AuthController::class, 'editProfile'])
-    ->name('edit-profile');
+Route::prefix('admin/')
+  ->controller(AuthController::class)
+  ->name('admin.')
+  ->middleware(['isauthenticated'])
+  ->group(function () {
+    Route::view('', 'admin.index')
+      ->name('dashboard');
+    Route::get('profile',  'profile')
+      ->name('profile');
+    Route::get('getProfile',  'getProfile')
+      ->name('getProfile');
+    Route::post('profile',  'editProfile')
+      ->name('edit-profile');
 
-  // DEPARTMENT ROUTES
-  Route::controller(DepartmentController::class)->group(function () {
-    Route::get('departments',  'index')
-      ->name('departments');
-    Route::get('depratment/create',  'create')
-      ->name('departments.create');
-    Route::post('department/store',  'store')
-      ->name('departments.store');
-    Route::delete('department/delete/{id}',  'delete')
-      ->name('department.delete');
 
-    Route::get('department/edit/{id}',  'edit')
-      ->name('department.edit');
 
-    Route::put('department/update/{id}',  'update')
-      ->name('department.update');
+    // DEPARTMENT ROUTES
+    Route::controller(DepartmentController::class)
+      ->group(function () {
+        Route::get('departments',  'index')
+          ->name('departments');
+        Route::get('depratment/create',  'create')
+          ->name('departments.create');
+        Route::post('department/store',  'store')
+          ->name('departments.store');
+        Route::delete('department/delete/{id}',  'delete')
+          ->name('department.delete');
+
+        Route::get('department/edit/{id}',  'edit')
+          ->name('department.edit');
+
+        Route::put('department/update/{id}',  'update')
+          ->name('department.update');
+      });
+
+    // NEWS ROUTES
+    Route::controller(NewsController::class)
+      ->group(function () {
+        Route::get('news',  'index')
+          ->name('news');
+        Route::get('news/create',  'create')
+          ->name('news.create');
+        Route::post('news/store',  'store')
+          ->name('news.store');
+        Route::delete('news/delete/{id}',  'delete')
+          ->name('news.delete');
+
+        Route::get('news/edit/{id}',  'edit')
+          ->name('news.edit');
+
+        Route::put('news/update/{id}',  'update')
+          ->name('news.update');
+      });
+
+    // SETTINGS ROUTES
+    Route::controller(SettingController::class)
+      ->group(function () {
+        Route::get('settings', 'index')
+          ->name('settings');
+        Route::get('settings/create', 'create')
+          ->name('settings.create');
+        Route::post('setting/store', 'store')
+          ->name('settings.store');
+        Route::delete('setting/delete/{id}', 'delete')
+          ->name('setting.delete');
+        Route::get('/setting/edit/{id}', 'edit')
+          ->name('setting.edit');
+        Route::put('setting/update/{id}', 'update')
+          ->name('settings.update');
+      });
   });
-
-
-  // NEWS ROUTES
-  Route::controller(NewsController::class)->group(function () {
-    Route::get('news',  'index')
-      ->name('news');
-    Route::get('news/create',  'create')
-      ->name('news.create');
-    Route::post('news/store',  'store')
-      ->name('news.store');
-    Route::delete('news/delete/{id}',  'delete')
-      ->name('news.delete');
-
-    Route::get('news/edit/{id}',  'edit')
-      ->name('news.edit');
-
-    Route::put('news/update/{id}',  'update')
-      ->name('news.update');
-  });
-});

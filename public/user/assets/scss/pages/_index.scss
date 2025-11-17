@@ -3,7 +3,7 @@
 @forward 'home.scss';
 @forward '../utility/index';
 
-// ABOUTS 
+// ABOUTS
 @forward './about/about-introduction';
 @forward './about/about-cancellor-message';
 @forward './about/about-vice-chancellor-message';
@@ -11,7 +11,7 @@
 @forward './about/about-events';
 @forward './about/about-news';
 
-// ADMINISTRATIONS 
+// ADMINISTRATIONS
 @forward './administration/vc-office';
 @forward './administration/registrar';
 @forward './administration/treasure';
@@ -30,7 +30,7 @@
 // DIRECTORATES
 @forward './directorates/academics';
 
-// CHAIRMANS 
+// CHAIRMANS
 @forward './chairman/computer-science';
 
 // ALL FACULTIES
@@ -48,6 +48,9 @@
 // NEWS
 @forward './news';
 
+// SINGLE NEWS
+@forward './single-news';
+
 // STUDENTS MODUKE
 @forward './students/time-table';
 @forward './students/library';
@@ -58,7 +61,7 @@
 @forward './students/regional-plan';
 @forward './students/digital-learning';
 
-//AADMISSIONS 
+//AADMISSIONS
 
 @forward './admissions/prospectus';
 @forward './admissions/how-to-apply';

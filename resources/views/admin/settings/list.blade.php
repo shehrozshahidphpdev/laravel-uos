@@ -2,32 +2,23 @@
   <x-slot:title>
     Admin | Departments
   </x-slot:title>
-  <!--begin::App Content Header-->
   <div class="app-content-header">
-    <!--begin::Container-->
     <div class="container-fluid">
-      <!--begin::Row-->
-      <div class="row">
+      <div class="row justify-content-end">
+
         <div class="col-sm-6">
-          <h3 class="mb-0">News</h3>
-        </div>
-        <div class="col-sm-6">
-          <x-admin.bread-crumbs :items="$breadcrumbs" />
+          <x-admin.bread-crumbs :items="$breadCrumbs" />
         </div>
       </div>
-      <!--end::Row-->
     </div>
-    <!--end::Container-->
   </div>
   <div class="app-content">
-    <!--begin::Container-->
     <div class="container-fluid">
       {{-- main body cntent goes here --}}
-      <!--begin::Row-->
       <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem;">
-          <h3 class="card-title mb-0">News</h3>
-          <a href="{{ route('admin.news.create') }}" class="btn btn-sm btn-success ms-auto">
+          <h3 class="card-title mb-0">Settings</h3>
+          <a href="{{ route('admin.settings.create') }}" class="btn btn-sm btn-success ms-auto">
             <i class="bi bi-plus-circle me-1"></i> Create
           </a>
         </div>
@@ -51,47 +42,34 @@
             <thead>
               <tr>
                 <th style="width: 10px">#</th>
-                <th>Title</th>
-                <th>slug</th>
-                <th>Image</th>
-                <th>Additional</th>
-                <th>Status</th>
-                <th>Created_at</th>
+                <th>Phone No</th>
+                <th>Email</th>
+                <th>Logo</th>
+                <th>Copy Rights</th>
+                <th>Created At</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-              @forelse ($allNews as $news)
+              @forelse ($settings as $setting)
                 <tr class="align-middle">
-                  <td>{{ $news->id }}</td>
-                  <td>{{ $news->title }}</td>
-                  <td>{{ $news->slug }}</td>
+                  <td>{{ $setting->id }}</td>
+                  <td>{{ $setting->phone_no }}</td>
+                  <td>{{ $setting->email }}</td>
                   <td>
-                    @if($news->image !== null)
-                      <img src="{{ asset('storage/admin/uploads/' . $news->image) }}" class="rounded img-thumbnail"
-                        width="100" alt="Department Image">
-                    @else
-                      <span class="text-danger">
-                        {{ "No Image" }}
-                      </span>
-                    @endif
+                    <img src="{{ asset('storage/admin/uploads/' . $setting->logo) }}" class="rounded img-thumbnail"
+                      width="100" alt="Setting logo">
                   </td>
+                  <td>{{ Str::limit($setting->copyrights, 20)   }}</td>
+                  <td>{{ $setting->created_at->format('Y-m-d') }}</td>
                   <td>
-                    {{ Str::limit(strip_tags($news->description), 20) }}
-                    {{-- {{ $news->additional_info }} --}}
-                  </td>
-                  <td><span
-                      class="badge rounded-pill {{ $news->is_active == 1 ? 'text-bg-success' : 'text-bg-danger' }}">{{ $news->is_active == 1 ? 'Active' : 'InActive' }}</span>
-                  </td>
-                  <td>{{ $news->created_at->format('Y-m-d') }}</td>
-                  <td>
-                    <a href="{{ route('admin.news.edit', $news->id) }}" class="btn btn-sm btn-primary">
+                    <a href="{{ route('admin.setting.edit', $setting->id) }}" class="btn btn-sm btn-primary">
                       <i class="bi bi-pencil-fill"></i>
                     </a>
                   </td>
-                  <td> <x-base-form action="{{ route('admin.news.delete', $news->id) }}" class="delete-record"
-                      data-id="{{ $news->id }}">
+                  <td> <x-base-form action="{{ route('admin.setting.delete', $setting->id) }}" class="delete-record"
+                      data-id="{{ $setting->id }}">
                       <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
                     </x-base-form>
                   </td>
@@ -108,10 +86,8 @@
         </div>
       </div>
 
-      <!--end::Row-->
     </div> <!--end::Container-->
   </div>
-  <!--end::App Content-->
   @push('scripts')
     <script>
       $(document).ready(function () {
@@ -126,7 +102,6 @@
           let form = $(this);
           let id = form.data('id');
           let action = form.attr('action');
-          console.log(action);
           $.ajax({
             url: action,
             type: 'delete',

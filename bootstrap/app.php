@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\Authenticated;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\IsAuthenticated;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -13,7 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
   )
   ->withMiddleware(function (Middleware $middleware): void {
     $middleware->alias([
-      'auth' => \App\Http\Middleware\Auth::class
+      'isauthenticated' => IsAuthenticated::class,
+      'authenticated' => Authenticated::class,
     ]);
   })
   ->withExceptions(function (Exceptions $exceptions): void {

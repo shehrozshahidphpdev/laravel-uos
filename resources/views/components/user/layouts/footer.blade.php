@@ -1,3 +1,4 @@
+@props(['settings'])
 <!-- main footer  -->
 <footer class="footer">
   <div class="container">
@@ -33,15 +34,16 @@
       </h1>
       <ul class="contact__links">
         <li class="contact__link"> <span class="icon"><i class="fa-solid fa-phone"></i> </span> <span
-            class="description">+92-40-9200432</span> </li>
+            class="description">{{ $settings->phone_no }}</span> </li>
         <li class="contact__link"> <span class="icon"><i class="fa-solid fa-envelope"></i> </span>
-          <span class="description"> info@uosahiwal.edu.pk</span>
+          <span class="description"> {{ $settings->email }}</span>
         </li>
         <li class="contact__link"> <span class="icon"><i class="fa-solid fa-location-dot"></i> </span>
           <span class="description">
             University of
             Sahiwal, University
-            Road, Sahiwal, Pakistan</span>
+            Road, Sahiwal, Pakistan
+          </span>
         </li>
       </ul>
     </div>
@@ -50,7 +52,7 @@
 <!-- sub footer  -->
 <footer class="credits">
   <div class="container">
-    <p class="copyrights"> Copyright © 2025. All rights reserved. </p>
+    <p class="copyrights">{{ $settings->copyrights }} </p>
     <div class="developer">Developed by <span class="name">Shehroz Shahid </span>
       PHP & LARAVEL developer.</div>
   </div>

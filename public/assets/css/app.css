@@ -633,7 +633,6 @@ h6 {
   height: 300px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: red;
 }
 .chancellor .container .chancellor__profile-pic img {
   width: 100%;
@@ -677,6 +676,7 @@ h6 {
 }
 .news-section .container .swiper-wrapper .swiper-slide {
   margin-right: 10px !important;
+  min-height: 250px;
 }
 .news-section .news-header {
   display: flex;
@@ -725,13 +725,12 @@ h6 {
   width: 350px !important;
   background-color: #125875;
   color: #fff;
-  text-align: center;
-  padding: 3rem;
+  padding: 2.5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   margin-right: 1.5rem;
   transition: background-color 0.3s ease;
+  align-items: stretch;
 }
 .news-section .news-swiper .news-card:hover {
   cursor: pointer;
@@ -742,12 +741,13 @@ h6 {
   flex-direction: column;
   text-align: start;
   font-size: 1.2rem;
+  height: 150px;
 }
 .news-section .news-swiper .news-card-content .news-title-link {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: auto;
 }
 .news-section .news-swiper .news-card-content .news-title-link a {
   color: #fff;
@@ -780,14 +780,16 @@ h6 {
   margin: 2rem 0;
   background-color: #ffc107;
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: 8px;
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   text-decoration: none;
+  border: 0.5px solid transparent;
   transition: border 0.3s ease, background-color 0.3s ease;
 }
 .news-section .news-button a:hover {
-  border-color: #000;
+  border: 0.5px solid #000;
+  color: #f3f4f8;
 }
 
 .department {
@@ -1155,11 +1157,13 @@ h6 {
   color: #fff;
   background-position: center top;
   position: relative;
+  object-fit: cover;
 }
 .hero__banner .container {
   padding: 6rem 2rem;
   display: flex;
   justify-content: center;
+  height: 300px;
   align-items: center;
 }
 .hero__banner .container .title {
@@ -1193,6 +1197,10 @@ h6 {
   font-size: 1.4rem;
   color: white;
   position: relative;
+}
+.breadcrumbs ul li a {
+  text-decoration: none;
+  color: #f3f4f8;
 }
 .breadcrumbs ul li:not(:last-child)::after {
   content: "›";
@@ -3881,40 +3889,149 @@ h6 {
   font-family: sans-serif;
 }
 .main .news {
-  padding: 8rem 3rem;
+  padding: 8rem 6rem;
 }
 .main .news .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
-.main .news .container .news-card {
+.main .news .container .news__card {
   background: #f3f4f8;
   padding: 2rem;
   text-align: start;
-  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
-.main .news .container .news-card:hover {
+.main .news .container .news__card:hover {
   background: #125875;
 }
-.main .news .container .news-card:hover .news-card__title-link {
-  color: white;
+.main .news .container .news__card:hover .news__card-title a {
+  color: #f3f4f8 !important;
 }
-.main .news .container .news-card__title-link {
-  text-decoration: none;
-  color: #141b22;
-  display: inline-block;
-  height: 40px;
-  cursor: pointer;
+.main .news .container .news__card:hover .event__card-description p {
+  color: #f3f4f8;
 }
-.main .news .container .news-card__title-link .news-card__title {
+.main .news .container .news__card .news__card-title {
   font-size: 1.3rem;
   font-weight: 600;
+  margin-bottom: 1rem;
 }
-.main .news .container .news-card__description {
+.main .news .container .news__card .news__card-title a {
+  text-decoration: none;
+  color: #141b22;
+  transition: color 0.3s ease;
+}
+.main .news .container .news__card .event__card-description p {
+  color: #141b22;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.main .single-news {
+  padding: 4rem 0;
+  /* Responsive */
+}
+.main .single-news .container {
+  padding: 6rem 6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  /* Left side main content */
+  /* Right sidebar */
+}
+.main .single-news .container .main-area {
+  flex: 2.5;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.main .single-news .container .main-area .title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #222;
+}
+.main .single-news .container .main-area .main-banner {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.main .single-news .container .main-area .main-banner .main-img {
+  width: 100%;
+  max-width: 100%;
+  max-height: auto;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+  background-position: center;
+}
+.main .single-news .container .main-area .description {
+  line-height: 1.6;
+}
+.main .single-news .container .main-area .description p {
   color: #777777;
   font-size: 1.3rem;
-  line-height: 1.6;
+}
+.main .single-news .container .main-area .description img {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+.main .single-news .container .news-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.main .single-news .container .news-sidebar .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ffc107;
+  padding-bottom: 0.5rem;
+  width: fit-content;
+}
+.main .single-news .container .news-sidebar .news-navigation .news-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.main .single-news .container .news-sidebar .news-navigation .news-items .news-item {
+  list-style: none;
+}
+.main .single-news .container .news-sidebar .news-navigation .news-items .news-item a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #777777;
+  line-height: 1.4;
+  transition: 0.2s ease-in-out;
+}
+.main .single-news .container .news-sidebar .news-navigation .news-items .news-item a:hover {
+  color: tomato;
+  padding-left: 0.5rem;
+}
+@media (max-width: 992px) {
+  .main .single-news .container {
+    flex-direction: column;
+    padding: 3rem;
+  }
+  .main .single-news .container .main-area .title {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .main .single-news .container {
+    padding: 2rem;
+  }
+  .main .single-news .container .main-area .title {
+    font-size: 2.2rem;
+  }
+  .main .single-news .container .news-sidebar .title {
+    font-size: 2rem;
+  }
 }
 
 .main .time-table {
