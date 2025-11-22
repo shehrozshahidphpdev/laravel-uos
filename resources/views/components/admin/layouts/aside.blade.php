@@ -5,10 +5,11 @@
     <!--begin::Brand Link-->
     <a href="./index.html" class="brand-link">
       <!--begin::Brand Image-->
-      <img src="./assets/img/AdminLTELogo.png" alt="Logo" class="brand-image opacity-75 shadow" />
+      <img src="{{ asset('storage/admin/uploads/1763138947_php-logo-bigger.png') }}" alt="Logo"
+        class="brand-image opacity-75 shadow" />
       <!--end::Brand Image-->
       <!--begin::Brand Text-->
-      <span class="brand-text fw-light">CMS</span>
+      {{-- <span class="brand-text fw-light">CMS</span> --}}
       <!--end::Brand Text-->
     </a>
     <!--end::Brand Link-->
@@ -30,8 +31,8 @@
 
         <li class="nav-item">
           <a href="{{ route('admin.departments') }}" class="nav-link">
-            <i class="fa-solid fa-newspaper"></i>
-            <p>Depratments</p>
+            <i class="fa-regular fa-building"></i>
+            <p>Departments</p>
           </a>
         </li>
 
@@ -48,6 +49,21 @@
             <p>Settings</p>
           </a>
         </li>
+        {{-- events --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.events') }}" class="nav-link">
+            <i class="fa-regular fa-calendar"></i>
+            <p>Events</p>
+          </a>
+        </li>
+        {{-- administrations --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.administrations') }}" class="nav-link">
+            <i class="fa-brands fa-black-tie"></i>
+            <p>Administrations</p>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon bi bi-box-seam-fill"></i>

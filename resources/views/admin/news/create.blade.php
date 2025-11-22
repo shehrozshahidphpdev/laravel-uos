@@ -4,10 +4,7 @@
   </x-slot:title>
   <div class="app-content-header">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-6">
-          <h3 class="mb-0">News / Create</h3>
-        </div>
+      <div class="row justify-content-end">
         <div class="col-sm-6">
           <x-admin.bread-crumbs :items="$breadCrumbs" />
         </div>
@@ -24,15 +21,7 @@
             <div class="card-header">
               <div class="card-title">News</div>
             </div>
-            @if ($errors->any())
-              <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                  @foreach ($errors->all() as $error)
-                    toastr.error("{{ $error }}");
-                  @endforeach
-                                                                                                                                              });
-              </script>
-            @endif
+            <x-admin.show-errors />
             <x-base-form action="{{ route('admin.news.store') }}" :media="true">
               <!--begin::Body-->
               <div class="card-body">

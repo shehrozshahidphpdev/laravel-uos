@@ -161,12 +161,16 @@ class NewsController extends Controller
   }
   public function delete(Request $request)
   {
-    $department = News::findOrFail($request->id);
+    $news = News::findOrFail($request->id);
 
     try {
-      $department->delete();
+      $file = Storage_path('app/public/admin/uploads/' . $news->image);
+      if (file_exists($file)) {
+        @unlink($file);
+      }
+      $news->delete();
       return response()->json([
-        'message' => 'News Deleted Successfully!',
+        'message' => 'Record Deleted Successfully!',
       ], 200);
     } catch (\Exception $e) {
       Log::error("Failed To Delete" . $e->getMessage());

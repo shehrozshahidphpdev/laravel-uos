@@ -47,4 +47,9 @@ class User extends Authenticatable
   {
     return $this->hasMany(News::class);
   }
+
+  public function administrations()
+  {
+    return $this->hasMany(Administration::class, 'created_by', 'id');
+  }
 }

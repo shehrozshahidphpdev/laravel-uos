@@ -54,21 +54,21 @@
         <li class="navigation__item about"><a href="">About</a>
           <div class="dropdown">
             <ul class="dropdown__items">
-              <li class="dropdown__item"><a href="about\about-introduction.html"
+              <li class="dropdown__item"><a href="{{ route('user.introduction') }}"
                   class="dropdown__item-link">Introduction</a></li>
-              <li class="dropdown__item"><a href="about\about-chancellor-message.html"
-                  class="dropdown__item-link">Chncellor
+              <li class="dropdown__item"><a href="{{ route('user.chancellor-message') }}"
+                  class="dropdown__item-link">Chancellor
                   Message</a></li>
-              <li class="dropdown__item"><a href="about\about-vice-chancellor-message.html"
-                  class="dropdown__item-link">Vice
+              <li class="dropdown__item"><a href="{{ route('user.vc-message') }}" class="dropdown__item-link">Vice
                   Chancellor Message</a></li>
-              <li class="dropdown__item"><a href="about\about-uni-map.html" class="dropdown__item-link">Uni
+              <li class="dropdown__item"><a href="{{ route('user.uni-map') }}" class="dropdown__item-link">Uni
                   Map</a>
               </li>
-              <li class="dropdown__item"><a href="about\about-newsletter.html"
+              <li class="dropdown__item"><a href="{{ route('user.news-letter') }}"
                   class="dropdown__item-link">NewsLetter</a></li>
-              <li class="dropdown__item"><a href="about\about-events.html" class="dropdown__item-link">Events</a></li>
-              <li class="dropdown__item"><a href="about\about-news.html" class="dropdown__item-link">News</a>
+              <li class="dropdown__item"><a href="{{ route('user.events') }}" class="dropdown__item-link">Events</a>
+              </li>
+              <li class="dropdown__item"><a href="{{ route('user.news') }}" class="dropdown__item-link">News</a>
               </li>
             </ul>
           </div>
@@ -78,13 +78,13 @@
           </a>
           <div class="dropdown">
             <ul class="dropdown__items">
-              <li class="dropdown__item"><a href="administration\vc-office.html" class="dropdown__item-link">Vice
+              <li class="dropdown__item"><a href="{{route('user.vice-chancellor')}}" class="dropdown__item-link">Vice
                   Chancellor office</a></li>
-              <li class="dropdown__item"><a href="administration\registrar.html" class="dropdown__item-link">Registrar
+              <li class="dropdown__item"><a href="{{route('user.registrar')}}" class="dropdown__item-link">Registrar
                   Office</a></li>
-              <li class="dropdown__item"><a href="administration\treasure-office.html"
-                  class="dropdown__item-link">Treasure Office</a></li>
-              <li class="dropdown__item"><a href="administration\controller-examinations.html"
+              <li class="dropdown__item"><a href="{{route('user.treasure')}}" class="dropdown__item-link">Treasure
+                  Office</a></li>
+              <li class="dropdown__item"><a href="{{route('user.controller-examination')}}"
                   class="dropdown__item-link">Controller Examination</a></li>
             </ul>
           </div>
@@ -254,7 +254,7 @@
         </li>
         <li class="navigation__item"><a href="merit-list.html">Merit Lists</a>
         </li>
-        <li class="navigation__item"><a href="contact-us.html">Contact Us</a>
+        <li class="navigation__item"><a href="{{ route('user.contact') }}">Contact Us</a>
         </li>
         {{-- signle news --}}
         {{-- <li class="navigation__item"><a href="{{ route('user.single-news') }}">Single News</a>

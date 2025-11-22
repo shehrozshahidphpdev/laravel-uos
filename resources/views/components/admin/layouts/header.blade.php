@@ -9,9 +9,9 @@
           <i class="bi bi-list"></i>
         </a>
       </li>
-      <li class="nav-item d-none d-md-block">
+      {{-- <li class="nav-item d-none d-md-block">
         <a href="#" class="nav-link">Home</a>
-      </li>
+      </li> --}}
 
     </ul>
     <!--end::Start Navbar Links-->

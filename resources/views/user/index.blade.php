@@ -61,13 +61,13 @@
         <h1 class="events__title-jumbo">Our Events</h1>
       </div>
       <div class="event__cards-container">
-        <x-user.event-card />
-        <x-user.event-card />
-        <x-user.event-card />
+        @foreach ($events as $event)
+          <x-user.event-card :event="$event" />
+        @endforeach
       </div>
     </div>
     <div class="event-button">
-      <a href="">
+      <a href="{{ route('user.events') }}">
         All Events
         <i class="fa-solid fa-arrow-right"></i>
       </a>

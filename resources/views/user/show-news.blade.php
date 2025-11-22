@@ -2,7 +2,7 @@
 <x-user.layouts.master :settings="$settings">
   <x-slot:title>
     {{-- here dynamic title goes --}}
-    Home Page
+    Home News
   </x-slot:title>
   <main class="main">
     <x-user.hero-banner title="{{ $thisNews->title }}" navigation="News Details" />

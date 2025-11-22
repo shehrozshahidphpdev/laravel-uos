@@ -3,7 +3,8 @@
 
 .main {
   .container {
-    padding: 6rem 4rem;
+    padding: 3rem 4rem 1rem;
+
 
     @media (max-width: 576px) {
       padding: 3rem 0rem;
@@ -63,9 +64,10 @@
           display: grid;
           place-items: center;
 
-          button {
+          a {
             padding: 1rem 2rem;
             border: none;
+            font-size: 1rem;
             background-color: $primary-yellow;
             border-radius: 5px;
             color: white;

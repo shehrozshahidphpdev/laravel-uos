@@ -22,17 +22,20 @@
           background-color: #f0f7ff;
           transition: background 0.3s ease, color 0.3s ease;
           cursor: pointer;
-          border-radius: 0px;
+          border-radius: 0;
           position: relative;
           overflow: hidden;
-          border-radius: 0px !important;
 
           &:hover {
             background-color: #125875;
-            color: white;
+            color: #fff;
 
             img {
               transform: scale(1.1);
+            }
+
+            .event__cards-description .navigate {
+              color: #fff;
             }
           }
 
@@ -62,9 +65,14 @@
             padding: 2rem;
             font-size: 1.3rem;
             font-weight: bold;
+
+            .navigate {
+              text-decoration: none;
+              color: $dark-text;
+              transition: color 0.3s ease;
+            }
           }
         }
-
       }
     }
   }

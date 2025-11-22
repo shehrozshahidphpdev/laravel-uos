@@ -12,15 +12,31 @@ class DepartmentController extends Controller
   public function index()
   {
     $departments = Department::all();
+    $breadCrumbs = [
+      [
+        'label' => 'Departments',
+      ],
+    ];
+
     return view(
       'admin.departments.list',
-      ['departments' => $departments]
+      ['departments' => $departments, 'breadCrumbs' => $breadCrumbs]
     );
   }
 
   public function create()
   {
-    return view('admin.departments.create');
+    $breadCrumbs = [
+      [
+        'label' => 'Departments',
+        'url' => route('admin.departments')
+      ],
+      [
+        'label' => 'Create'
+      ]
+    ];
+
+    return view('admin.departments.create', ['breadCrumbs' => $breadCrumbs]);
   }
   public function store(Request $request)
   {
@@ -59,11 +75,23 @@ class DepartmentController extends Controller
 
   public function edit(string $id)
   {
+    $breadCrumbs = [
+      [
+        'label' => 'Departments',
+        'url' => route('admin.departments')
+      ],
+      [
+        'label' => 'Edit'
+      ]
+    ];
     try {
       $department = Department::findOrFail($id);
       return view(
         'admin.departments.edit',
-        ['department' => $department]
+        [
+          'department' => $department,
+          'breadCrumbs' => $breadCrumbs
+        ]
       );
     } catch (\Exception $e) {
       Log::error('Action Failed ' . $e->getMessage());
@@ -95,7 +123,6 @@ class DepartmentController extends Controller
         if (file_exists($oldFile)) {
           @unlink($oldFile);
         }
-
         $data['image'] = $imageName;
       }
 
@@ -103,11 +130,12 @@ class DepartmentController extends Controller
 
       if ($department) {
         return to_route('admin.departments')
-          ->with('message', 'Department Updated Successfully!');
+          ->with('message', 'Record Updated Successfully!');
       }
     } catch (\Exception $e) {
       Log::error("Entry Failed " . $e->getMessage());
-      return redirect()->back()
+      return redirect()
+        ->back()
         ->with('message', "Something, went wrong Please Try Again Later");
     }
   }
@@ -117,6 +145,10 @@ class DepartmentController extends Controller
     $department = Department::findOrFail($request->id);
 
     try {
+      $recordFile = storage_path('app/public/admin/uploads/' . $department->image);
+      if (file_exists($recordFile)) {
+        @unlink($recordFile);
+      }
       $department->delete();
       return response()->json([
         'message' => 'Department Deleted Successfully!',

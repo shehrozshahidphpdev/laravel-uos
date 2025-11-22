@@ -7,6 +7,7 @@
   background-position: center top;
   position: relative;
   object-fit: cover;
+  text-align: center;
 
   .container {
     padding: 6rem 2rem;
@@ -45,7 +46,7 @@
 
     li {
       list-style: none;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       color: white;
       position: relative;
 
@@ -126,7 +127,7 @@
       .description {
         margin-top: 1.5rem;
         color: #31647b;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         line-height: 1.6;
         text-align: justify;
         font-family: "Roboto", sans-serif;
@@ -151,7 +152,7 @@
 
     .title {
       color: #141b22;
-      font-size: 4rem;
+      font-size: 3rem;
       text-align: start;
     }
 
@@ -183,9 +184,10 @@
     .panel-content {
       color: #777777;
       padding: 2rem 0;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       display: none;
       opacity: 0;
+      line-height: 1.6;
       transition: opacity 0.3s ease;
     }
 

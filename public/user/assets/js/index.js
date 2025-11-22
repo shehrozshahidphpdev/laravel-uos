@@ -86,3 +86,31 @@ $(document).ready(function () {
   });
   $(".submenu li:last").css("border-bottom", "none");
 });
+
+// INTRODUCTION PAGE SCRIPT
+$(document).ready(function () {
+  const panels = $(".panel");
+  panels.each(function () {
+    $(this).on("click", function () {
+      const panel = $(this);
+      const content = panel.next(".panel-content");
+      const icon = panel.find(".chevron i");
+      const isOpen = content.hasClass("show");
+
+      // Close all panels first
+      panels.removeClass("toggle");
+      $(".panel-content").slideUp(300).removeClass("show");
+      panels
+        .find(".chevron i")
+        .removeClass("fa-chevron-down")
+        .addClass("fa-chevron-left");
+
+      // Open the clicked one if it was closed
+      if (!isOpen) {
+        panel.addClass("toggle");
+        content.slideDown(300).addClass("show");
+        icon.removeClass("fa-chevron-left").addClass("fa-chevron-down");
+      }
+    });
+  });
+});

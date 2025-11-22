@@ -1,6 +1,6 @@
 <x-admin.layouts.master>
   <x-slot:title>
-    Admin | Departments
+    Admin | Events
   </x-slot:title>
   <div class="app-content-header">
     <div class="container-fluid">
@@ -15,8 +15,8 @@
     <div class="container-fluid">
       <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem;">
-          <h3 class="card-title mb-0">News</h3>
-          <a href="{{ route('admin.news.create') }}" class="btn btn-sm btn-success ms-auto">
+          <h3 class="card-title mb-0">Events</h3>
+          <a href="{{ route('admin.events.create') }}" class="btn btn-sm btn-success ms-auto">
             <i class="bi bi-plus-circle me-1"></i> Create
           </a>
         </div>
@@ -28,7 +28,7 @@
                 <th style="width: 10px">#</th>
                 <th>Title</th>
                 <th>slug</th>
-                <th>Image</th>
+                <th>Poster</th>
                 <th>Additional</th>
                 <th>Status</th>
                 <th>Created_at</th>
@@ -37,15 +37,15 @@
               </tr>
             </thead>
             <tbody>
-              @forelse ($allNews as $news)
+              @forelse ($events as $event)
                 <tr class="align-middle">
-                  <td>{{ $news->id }}</td>
-                  <td>{{ $news->title }}</td>
-                  <td>{{ $news->slug }}</td>
+                  <td>{{ $event->id }}</td>
+                  <td>{{ Str::limit($event->title, 20) }}</td>
+                  <td>{{ Str::limit($event->slug, 20) }}</td>
                   <td>
-                    @if($news->image !== null)
-                      <img src="{{ asset('storage/admin/uploads/' . $news->image) }}" class="rounded img-thumbnail"
-                        width="100" alt="Department Image">
+                    @if($event->poster !== null)
+                      <img src="{{ asset('storage/admin/uploads/' . $event->poster) }}" class="rounded img-thumbnail"
+                        width="100" alt="Department Image" style="height: 60px">
                     @else
                       <span class="text-danger">
                         {{ "No Image" }}
@@ -53,20 +53,19 @@
                     @endif
                   </td>
                   <td>
-                    {{ Str::limit(strip_tags($news->description), 20) }}
-                    {{-- {{ $news->additional_info }} --}}
+                    {{ Str::limit(strip_tags($event->description), 20) }}
                   </td>
                   <td><span
-                      class="badge rounded-pill {{ $news->is_active == 1 ? 'text-bg-success' : 'text-bg-danger' }}">{{ $news->is_active == 1 ? 'Active' : 'InActive' }}</span>
+                      class="badge rounded-pill {{ $event->is_active == 1 ? 'text-bg-success' : 'text-bg-danger' }}">{{ $event->is_active == 1 ? 'Active' : 'InActive' }}</span>
                   </td>
-                  <td>{{ $news->created_at->format('Y-m-d') }}</td>
+                  <td>{{ $event->created_at->format('Y-m-d') }}</td>
                   <td>
-                    <a href="{{ route('admin.news.edit', $news->id) }}" class="btn btn-sm btn-primary">
+                    <a href="{{ route('admin.event.edit', $event->id) }}" class="btn btn-sm btn-primary">
                       <i class="bi bi-pencil-fill"></i>
                     </a>
                   </td>
-                  <td> <x-base-form action="{{ route('admin.news.delete', $news->id) }}" class="delete-record"
-                      data-id="{{ $news->id }}">
+                  <td> <x-base-form action="{{ route('admin.event.delete', $event->id) }}" class="delete-record"
+                      data-id="{{ $event->id }}">
                       <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
                     </x-base-form>
                   </td>
@@ -82,8 +81,7 @@
           </table>
         </div>
       </div>
-
-    </div> <!--end::Container-->
+    </div>
   </div>
   @push('scripts')
     <script>
@@ -104,6 +102,9 @@
             url: action,
             type: 'delete',
             dataType: 'json',
+            data: {
+              id: id,
+            },
             success: function (res) {
               console.log(res);
               toastr.success(res.message);
@@ -118,6 +119,4 @@
       })
     </script>
   @endpush
-
-
 </x-admin.layouts.master>

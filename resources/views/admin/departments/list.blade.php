@@ -7,26 +7,15 @@
     <!--begin::Container-->
     <div class="container-fluid">
       <!--begin::Row-->
-      <div class="row">
+      <div class="row justify-content-end">
         <div class="col-sm-6">
-          <h3 class="mb-0">Departments</h3>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-end">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Departments</li>
-          </ol>
+          <x-admin.bread-crumbs :items="$breadCrumbs" />
         </div>
       </div>
-      <!--end::Row-->
     </div>
-    <!--end::Container-->
   </div>
   <div class="app-content">
-    <!--begin::Container-->
     <div class="container-fluid">
-      {{-- main body cntent goes here --}}
-      <!--begin::Row-->
       <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem;">
           <h3 class="card-title mb-0">Departments</h3>
@@ -34,21 +23,7 @@
             <i class="bi bi-plus-circle me-1"></i> Create
           </a>
         </div>
-
-        @if(session()->has('message'))
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              toastr.success("{{ session('message') }}")
-            })
-          </script>
-        @endif
-        @if(session()->has('error'))
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              toastr.error("{{ session('error') }}")
-            })
-          </script>
-        @endif
+        <x-admin.session-message />
         <div class="card-body p-0">
           <table class="table table-striped mb-0">
             <thead>
