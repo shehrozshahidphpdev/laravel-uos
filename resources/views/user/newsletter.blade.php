@@ -4,8 +4,7 @@
     Home - Vc-Message
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="Newsletter
-" navigation="NewsLetter
+    <x-user.hero-banner :banner="$banner" navigation="NewsLetter
 " />
     <section class="map">
       <div class="container">

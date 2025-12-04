@@ -131,6 +131,9 @@ class AuthController extends Controller
         'email' => $request->email,
         'password' => Hash::make($request->password)
       ]);
+      //refresh the session after updating the record
+
+      Auth::user()->refresh();
 
       return response()->json([
         'message' => 'Profile Updated Successfully!',

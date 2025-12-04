@@ -1,38 +1,25 @@
 <x-admin.layouts.master>
   <x-slot:title>
-    Admin | Home-page
+    Admin | Profile
   </x-slot:title>
   <div class="app-content-header">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-6">
-          <h3 class="mb-0">Admin / Profile</h3>
-        </div>
+      <div class="row justify-content-end">
         <div class="col-sm-6">
           <x-admin.bread-crumbs :items="$breadCrumbs" />
         </div>
       </div>
-      <!--end::Row-->
     </div>
-    <!--end::Container-->
   </div>
   <div class="app-content">
-    <!--begin::Container-->
     <div class="container-fluid">
-      {{-- main body cntent goes here --}}
-      <!--begin::Row-->
       <div class="row justify-content-center">
         <div class="row col-md-10">
-          <!--begin::Quick Example-->
           <div class="card card-primary card-outline mb-4">
-            <!--begin::Header-->
             <div class="card-header">
               <div class="card-title">Profile</div>
             </div>
-            <!--end::Header-->
-            <!--begin::Form-->
             <x-base-form action="{{ route('admin.getProfile') }}" id="profileForm">
-              <!--begin::Body-->
               <input type="hidden" id="editId" value="">
               <div class="card-body">
                 <div class="row">
@@ -66,14 +53,10 @@
             </x-base-form>
             <!--end::Form-->
           </div>
-          <!--end::Quick Example-->
         </div>
       </div>
-      <!--end::Row-->
     </div>
-    <!--end::Container-->
   </div>
-  <!--end::App Content-->
   @push('scripts')
     <script>
       $(document).ready(function () {

@@ -6,14 +6,14 @@ use App\Models\Admin\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Administration;
+use App\Models\Admin\Profile;
 use Illuminate\Support\Facades\Auth;
 
 class AdministrationController extends Controller
 {
   public function index()
   {
-    $administrations = Administration::with('user')->get();
+    $administrations = Profile::with('user')->get();
     $breadCrumbs = [
       [
         'label' => 'Administrations',
@@ -54,7 +54,7 @@ class AdministrationController extends Controller
       'name' => 'required|min:3',
       'designation' => 'required|min:4',
       'phone_no' => 'phone:PK',
-      'email' => 'email|unique:administrations,email',
+      'email' => 'email|unique:profiles,email',
       'page' => 'required',
       'image' => 'mimes:png,jpg,jpeg|max:5048',
     ], [
@@ -69,7 +69,7 @@ class AdministrationController extends Controller
         $data['image'] = $imageName;
       }
 
-      Administration::create([
+      Profile::create([
         'name' => $request->name,
         'designation' => $request->designation,
         'phone_no' => $request->phone_no,
@@ -91,7 +91,7 @@ class AdministrationController extends Controller
   public function delete(Request $request)
   {
     try {
-      $data = Administration::findOrFail($request->id);
+      $data = Profile::findOrFail($request->id);
       $file = storage_path('app/public/admin/uploads/' .  $data->image);
       if (file_exists($file)) {
         @unlink($file);
@@ -108,7 +108,7 @@ class AdministrationController extends Controller
 
   public function edit(Request $request)
   {
-    $administration = Administration::findOrFail($request->id);
+    $administration = Profile::findOrFail($request->id);
     $breadCrumbs = [
       [
         'label' => 'Administrations',
@@ -126,7 +126,7 @@ class AdministrationController extends Controller
 
   public function update(Request $request, string $id)
   {
-    $administration = Administration::findOrFail($id);
+    $administration = Profile::findOrFail($id);
     $request->validate([
       'name' => 'required|min:3',
       'designation' => 'required|min:4',
@@ -152,7 +152,7 @@ class AdministrationController extends Controller
         $image->storeAs('admin/uploads/', $imageName, 'public');
       }
 
-      Administration::where('id', $id)->update([
+      Profile::where('id', $id)->update([
         'name' => $request->name,
         'designation' => $request->designation,
         'phone_no' => $request->phone_no,

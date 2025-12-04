@@ -4,8 +4,7 @@
     Home - Vc-Message
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="Uni Map
-" navigation="Map
+    <x-user.hero-banner :banner="$banner" navigation="Map
 " />
     <section class="map">
       <iframe

@@ -85,6 +85,22 @@ h6 {
   font-size: calc(var(--font-size-base) * 0.875);
 }
 
+.primary-title {
+  font-size: 4rem;
+}
+
+.secondary-title {
+  font-size: 3rem;
+}
+
+.tertiary-title {
+  font-size: 2.5rem;
+}
+
+.jost {
+  font-family: "jost" !important;
+}
+
 // p {
 //   margin-bottom: 1em;
 //   max-width: 65ch;

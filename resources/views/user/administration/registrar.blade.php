@@ -4,8 +4,7 @@
     Home - Introduction
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="Registrar Office
-" navigation="Office" />
+    <x-user.hero-banner :banner="$banner" navigation="Office" />
     <section class="vc">
       @forelse ($administrations as $administration)
         <div class="container">

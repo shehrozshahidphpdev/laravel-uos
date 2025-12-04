@@ -4,7 +4,7 @@
     Home - News
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="All News" navigation="News" />
+    <x-user.hero-banner :banner="$banner" navigation="News" />
     <section class="news">
       <div class="container">
         <div class="news__card-container">

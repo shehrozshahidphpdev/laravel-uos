@@ -9,6 +9,25 @@ use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
+  public $settings;
+
+  public function __construct()
+  {
+    $this->settings = Setting::first();
+  }
+  public function news()
+  {
+    $allNews = News::all();
+    $settings = Setting::first();
+    return view(
+      'user.news',
+      [
+        'settings' => $this->settings,
+        'allNews' => $allNews,
+        'banner' => banner('news')
+      ]
+    );
+  }
   public function showNews(Request $request, string $slug)
   {
     $allnews = News::all();
@@ -20,21 +39,7 @@ class NewsController extends Controller
       [
         'allnews' => $allnews,
         'thisNews' => $thisNews,
-        'settings' => $settings
-      ]
-    );
-  }
-
-  public function news()
-  {
-    $allNews = News::all();
-    $settings = Setting::first();
-    // dd($settings);
-    return view(
-      'user.news',
-      [
-        'settings' => $settings,
-        'allNews' => $allNews
+        'settings' => $this->settings
       ]
     );
   }

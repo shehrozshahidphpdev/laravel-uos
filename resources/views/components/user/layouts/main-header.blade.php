@@ -176,30 +176,33 @@
         <li class="navigation__item"><a href="">Directories</a>
           <div class="dropdown ">
             <ul class="dropdown__items">
-              <li class="dropdown__item"><a href="directorates\academics.html" class="dropdown__item-link">Academics</a>
+              <li class="dropdown__item"><a href="{{ route('user.director.academics') }}"
+                  class="dropdown__item-link">Academics</a>
               </li>
-              <li class="dropdown__item"><a href="directorates\estate-management.html"
+              <li class="dropdown__item"><a href="{{ route('user.director.estate-management') }}"
                   class="dropdown__item-link">Estate Management</a></li>
-              <li class="dropdown__item"><a href="directorates\graduate-studies.html"
+              <li class="dropdown__item"><a href="{{ route('user.graduate-studies') }}"
                   class="dropdown__item-link">Graduate Studies</a></li>
-              <li class="dropdown__item"><a href="directorates\information-technology.html"
+              <li class="dropdown__item"><a href="{{ route('user.information-technology') }}"
                   class="dropdown__item-link">Information Technology</a></li>
-              <li class="dropdown__item"><a href="directorates\oric.html" class="dropdown__item-link">ORIC</a>
+              <li class="dropdown__item"><a href="{{ route('user.director.oric') }}"
+                  class="dropdown__item-link">ORIC</a>
               </li>
-              <li class="dropdown__item"><a href="directorates\planning-development.html"
-                  class="dropdown__item-link">Planning And Development</a></li>
-              <li class="dropdown__item"><a href="directorates\project-director.html"
+              <li class="dropdown__item"><a href="{{ route('user.planning-development') }}"
+                  class=" dropdown__item-link">Planning And Development</a></li>
+              <li class="dropdown__item"><a href="{{ route('user.project-director') }}"
                   class="dropdown__item-link">Project Director </a></li>
-              <li class="dropdown__item"><a href="directorates\quality-enhancement-call.html"
-                  class="dropdown__item-link">Quality Enhancemebt Call </a></li>
-              <li class="dropdown__item"><a href="directorates\resident-officer.html"
+              <li class="dropdown__item"><a href="{{ route('user.qec') }}" class="dropdown__item-link">Quality
+                  Enhancemebt Call </a></li>
+              <li class="dropdown__item"><a href="{{ route('user.resident-officer') }}"
                   class="dropdown__item-link">Resident Officer </a></li>
-              <li class="dropdown__item"><a href="directorates\student-affairs.html" class="dropdown__item-link">Student
+              <li class="dropdown__item"><a href="{{ route('user.student-affair') }}"
+                  class="dropdown__item-link">Student
                   Affairs </a></li>
-              <li class="dropdown__item"><a href="directorates\sports.html" class="dropdown__item-link">Sports
+              <li class="dropdown__item"><a href="{{ route('user.sports') }}" class="dropdown__item-link">Sports
                 </a>
               </li>
-              <li class="dropdown__item"><a href="directorates\sustainability.html"
+              <li class="dropdown__item"><a href="{{ route('user.sustainability') }}"
                   class="dropdown__item-link">sustainability </a></li>
             </ul>
           </div>
@@ -247,12 +250,12 @@
               <li class="dropdown__item"><a href="downloads\forms.html" class="dropdown__item-link">Download
                   Forms</a>
               </li>
-              <li class="dropdown__item"><a href="downloads\notifications.html"
+              <li class="dropdown__item"><a href="{{ route('user.notifications') }}"
                   class="dropdown__item-link">Notifications</a></li>
             </ul>
           </div>
         </li>
-        <li class="navigation__item"><a href="merit-list.html">Merit Lists</a>
+        <li class="navigation__item"><a href="{{ route('user.merit-list') }}">Merit Lists</a>
         </li>
         <li class="navigation__item"><a href="{{ route('user.contact') }}">Contact Us</a>
         </li>

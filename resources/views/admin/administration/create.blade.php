@@ -21,7 +21,8 @@
               <div class="card-title">Administratins</div>
             </div>
             <x-admin.show-errors />
-            <x-base-form action="{{ route('admin.administrations.store') }}" :media="true">
+            <x-base-form action="{{ route('admin.profile.store') }}" :media="true">
+              <input type="hidden" name="module" value="administrations">
               <div class="card-body">
                 <div class="row">
                   <div class="mb-3 col">
@@ -83,12 +84,12 @@
           e.preventDefault();
           console.log('Hello');
           $('.course-group').append(`
-                                                                                          <div class="input-group">
-                                                                                            <input type="text" class="form-control" name="offered_courses[]" placeholder="Enter course name" />
-                                                                                            <button type="button" class="btn btn-sm btn-danger" id="remove-field" title="remove field">
-                                                                                              <i class="bi bi-trash"></i>
-                                                                                            </button>
-                                                                                          </div>`)
+                                                                                                  <div class="input-group">
+                                                                                                    <input type="text" class="form-control" name="offered_courses[]" placeholder="Enter course name" />
+                                                                                                    <button type="button" class="btn btn-sm btn-danger" id="remove-field" title="remove field">
+                                                                                                      <i class="bi bi-trash"></i>
+                                                                                                    </button>
+                                                                                                  </div>`)
         });
         $(document).on('click', '#remove-field', function (e) {
           e.preventDefault();

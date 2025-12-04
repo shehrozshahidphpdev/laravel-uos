@@ -4,13 +4,20 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Admin\News;
 use App\Models\Admin\Event;
-use Illuminate\Http\Request;
+use App\Models\Admin\Merit;
 use App\Models\Admin\Setting;
 use App\Models\Admin\Department;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Banner;
 
 class HomeController extends Controller
 {
+
+  public $settings;
+  public function __construct()
+  {
+    $this->settings = Setting::first();
+  }
   public function index()
   {
     $settings = Setting::first();
@@ -22,8 +29,8 @@ class HomeController extends Controller
       [
         'departments' => $departments,
         'allNews' => $news,
-        'settings' => $settings,
-        'events' => $events
+        'settings' => $this->settings,
+        'events' => $events,
       ]
     );
   }
@@ -34,51 +41,72 @@ class HomeController extends Controller
     return view(
       'user.contact',
       [
-        'settings' => $settings,
+        'settings' => $this->settings,
+        'banner' => banner('contact-us')
       ]
     );
   }
 
   public function introduction()
   {
+    // dd(banner('introduction'));
     $settings = Setting::first();
     return view(
       'user.introduction',
       [
-        'settings' => $settings,
+        'settings' => $this->settings,
+        'banner' => banner('introduction')
       ]
     );
   }
 
   public function chancellorMessage()
   {
-    $settings = Setting::first();
+    // return banner('chancellor-message');
+
     return view(
       'user.chancellor-message',
       [
-        'settings' => $settings,
+        'settings' => $this->settings,
+        'banner' => banner('chancellor-message')
       ]
     );
   }
 
   public function vcMessage()
   {
-    $settings = Setting::first();
     return view(
-      'user.vice-chancellor-message',
+      'user.vice-chancellor',
+      [
+        'settings' => $this->settings,
+        'banner' => banner('vice-chancellor-message')
+      ]
+    );
+  }
+
+  public function meritList()
+  {
+    $settings = Setting::first();
+    $merits = Merit::all();
+    // dd($merits);
+    return view(
+      'user.merit-list',
       [
         'settings' => $settings,
+        'merits' => $merits,
+        'banner' => banner('merit-list')
       ]
     );
   }
 
   public function uniMap()
   {
-    $settings = Setting::first();
     return view(
       'user.uni-map',
       [
-        'settings' => $settings,
+        'settings' => $this->settings,
+        'banner' => banner('uni-map')
+
       ]
     );
   }
@@ -89,8 +117,37 @@ class HomeController extends Controller
     return view(
       'user.newsletter',
       [
-        'settings' => $settings,
+        'settings' => $this->settings,
+        'banner' => banner('newsletter')
+
       ]
     );
   }
+
+  public function academics()
+  {
+    return view(
+      'user.academics',
+      [
+        'settings' => $this->settings,
+        'banner' => banner('academics')
+
+      ]
+    );
+  }
+
+
+
+  public function notifications()
+  {
+    return view(
+      'user.notifications',
+      [
+        'settings' => $this->settings,
+        'banner' => banner('newsletter')
+      ]
+    );
+  }
+
+  public function dsaDownloads() {}
 }

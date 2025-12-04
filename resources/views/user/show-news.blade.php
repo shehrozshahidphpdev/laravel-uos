@@ -5,7 +5,7 @@
     Home News
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="{{ $thisNews->title }}" navigation="News Details" />
+    <x-user.event-banner title="{{ $thisNews->title }}" navigation="News Details" />
 
     <section class="single-news">
       <div class="container">

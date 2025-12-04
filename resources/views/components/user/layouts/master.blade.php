@@ -1,4 +1,4 @@
-@props(['settings'])
+@props(['settings', 'title'])
 <!DOCTYPE html>
 <html lang="en">
 

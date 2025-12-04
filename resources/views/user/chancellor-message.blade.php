@@ -1,10 +1,10 @@
-@props(['settings'])
+@props(['settings', 'banner'])
 <x-user.layouts.master :settings="$settings">
   <x-slot:title>
     Home - Introduction
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="Chancellor's Message" navigation="Chancellors Message" />
+    <x-user.hero-banner :banner="$banner" navigation="Chancellors Message" />
     <section class="featured">
       <div class="container">
         <div class="chancellor__profile">

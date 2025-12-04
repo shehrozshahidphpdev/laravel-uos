@@ -35,7 +35,7 @@
                 <th>Email</th>
                 <th>Image</th>
                 <th>Page</th>
-                <th>Created At</th>
+                {{-- <th>Created At</th> --}}
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -44,8 +44,8 @@
               @forelse ($administrations as $administration)
                 <tr class="align-middle">
                   <td>{{ $administration->id }}</td>
-                  <td>{{ Str::limit($administration->name, 20, '...') }}</td>
-                  <td>{{ $administration->designation }}</td>
+                  <td>{{ Str::limit($administration->name, 10, '...') }}</td>
+                  <td>{{ Str::limit($administration->designation, 10)}}</td>
                   <td>{{ $administration->phone_no }}</td>
                   <td>{{ $administration->email }}</td>
                   <td>
@@ -53,7 +53,7 @@
                       class="rounded img-thumbnail" width="100" alt="Department Image">
                   </td>
                   <td>{{ $administration->page }}</td>
-                  <td>{{ $administration->created_at->format('Y-m-d') }}</td>
+                  {{-- <td>{{ $administration->created_at->format('Y-m-d') }}</td> --}}
                   <td>
                     <a href="{{ route('admin.administration.edit', $administration->id) }}"
                       class="btn btn-sm btn-primary">
@@ -69,7 +69,7 @@
                 </tr>
               @empty
                 <tr>
-                  <td colspan="7" class="text-center text-muted py-3">
+                  <td colspan="12" class="text-center text-muted py-3">
                     Sorry! No Data Found
                   </td>
                 </tr>

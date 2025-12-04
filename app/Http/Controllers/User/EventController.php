@@ -9,25 +9,34 @@ use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
+  public $settings;
+
+  public function __construct()
+  {
+    $this->settings = Setting::first();
+  }
+
   public function events()
   {
     $events = Event::all();
-    $settings = Setting::first();
 
-    return view('user.events', ['events' => $events, 'settings' => $settings]);
+    return view('user.events', [
+      'events' => $events,
+      'settings' => $this->settings,
+      'banner' => banner('events')
+    ]);
   }
 
   public function showEvent(string $slug)
   {
     $event = Event::where('slug', $slug)->first();
-    $settings = Setting::first();
     $allEvents = Event::all();
     return view(
       'user.show-event',
       [
         'thisEvent' => $event,
         'allEvents' => $allEvents,
-        'settings' => $settings
+        'settings' => $this->settings
       ]
     );
   }

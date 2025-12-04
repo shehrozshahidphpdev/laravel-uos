@@ -1,10 +1,7 @@
 @props(['settings'])
-<x-user.layouts.master :settings="$settings">
-  <x-slot:title>
-    Home - Contact
-  </x-slot:title>
+<x-user.layouts.master :settings="$settings" title="Home - Contact">
   <main class="main">
-    <x-user.hero-banner title="Contact Us" navigation="Contact Us" />
+    <x-user.hero-banner :banner="$banner" navigation="Contact Us" />
     <section class="contact-us">
       <div class="container">
         <p class="mini-title bold"> <i class="fa-solid fa-graduation-cap"></i>

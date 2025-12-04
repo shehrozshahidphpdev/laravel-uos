@@ -4,7 +4,7 @@
     Home - Introduction
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="Contact Us" navigation="Contact Us" />
+    <x-user.hero-banner :banner="$banner" navigation="Contact Us" />
     <section class="featured">
       <div class="container">
         <div class="profile">

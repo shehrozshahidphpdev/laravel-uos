@@ -64,25 +64,79 @@
           </a>
         </li>
 
+
+        {{-- directorates --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.directorates') }}" class="nav-link">
+            <i class="fa-solid fa-chair"></i>
+            <p>Directorates</p>
+          </a>
+        </li>
+
+
+        {{-- merits --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.merits') }}" class="nav-link">
+            <i class="fa-solid fa-medal"></i>
+            <p>Merits</p>
+          </a>
+        </li>
+
+        {{-- banner --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.banners') }}" class="nav-link">
+            <i class="fa-regular fa-flag"></i>
+            <p>Banners</p>
+          </a>
+        </li>
+        {{-- tables teams --}}
+
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon bi bi-box-seam-fill"></i>
+            <i class="fa-regular fa-circle"></i>
             <p>
-              Widgets
+              Tables
               <i class="nav-arrow bi bi-chevron-right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./widgets/small-box.html" class="nav-link">
+              <a href="{{ route('admin.tables.index') }}" class="nav-link">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>Small Box</p>
+                <p>Tables</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="{{ route('admin.tables-columns.index') }}" class="nav-link">
+                <i class="nav-icon bi bi-circle"></i>
+                <p>Table Data</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        {{-- oric teams --}}
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa-regular fa-circle"></i>
+            <p>
+              ORICS
+              <i class="nav-arrow bi bi-chevron-right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('admin.oric-team') }}" class="nav-link">
+                <i class="nav-icon bi bi-circle"></i>
+                <p>ORIC TEAMS</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="./widgets/info-box.html" class="nav-link">
+              <a href="{{ route('admin.oric-publication') }}" class="nav-link">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>info Box</p>
+                <p>Oric Publications</p>
               </a>
             </li>
             <li class="nav-item">

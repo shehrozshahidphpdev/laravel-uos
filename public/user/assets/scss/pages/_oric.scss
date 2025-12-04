@@ -1,0 +1,65 @@
+@use './vars'as *;
+@use '../mixins/flex'as *;
+
+.main {
+  .intro {
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      text-align: start;
+      gap: 2rem;
+      margin-top: 5rem;
+      padding-left: 8rem;
+      padding-right: 8rem;
+
+      @media (max-width: 576px) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      /* MAIN CONTENT */
+      .hero-content {
+        flex: 3;
+        min-width: 0;
+
+        .oric-team {
+          .primary-title {
+            margin-bottom: 4rem;
+          }
+
+          p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: $light-text;
+
+          }
+
+          .title {
+            margin: 3rem 0;
+          }
+
+          .check-points {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            margin: 4rem 0;
+
+            .check-point {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+          }
+        }
+      }
+
+
+      .navigation__item {
+        color: $light-text;
+      }
+    }
+  }
+}

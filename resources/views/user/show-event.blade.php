@@ -1,9 +1,5 @@
 @props(['settings'])
-<x-user.layouts.master :settings="$settings">
-  <x-slot:title>
-    {{-- here dynamic title goes --}}
-    Home {{ $thisEvent->slug }}
-  </x-slot:title>
+<x-user.layouts.master :settings="$settings" title="{{ $thisEvent->slug }}">
   @push('styles')
     <style>
       .other-images {
@@ -20,7 +16,7 @@
     </style>
   @endpush
   <main class="main">
-    <x-user.hero-banner title="{{ $thisEvent->title }}" navigation="Event Details" />
+    <x-user.event-banner title="{{ $thisEvent->title }}" navigation="Event Details" />
     <section class="single-news">
       <div class="container">
         <div class="main-area">
