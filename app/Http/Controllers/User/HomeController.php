@@ -5,10 +5,11 @@ namespace App\Http\Controllers\User;
 use App\Models\Admin\News;
 use App\Models\Admin\Event;
 use App\Models\Admin\Merit;
+use App\Models\Admin\Banner;
 use App\Models\Admin\Setting;
+use App\Models\Admin\Download;
 use App\Models\Admin\Department;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Banner;
 
 class HomeController extends Controller
 {
@@ -140,14 +141,37 @@ class HomeController extends Controller
 
   public function notifications()
   {
+    $downloads = Download::where('page', 'notifications')->get();
     return view(
       'user.notifications',
       [
         'settings' => $this->settings,
-        'banner' => banner('newsletter')
+        'banner' => banner('notifications'),
+        'downloads' => $downloads
       ]
     );
   }
 
-  public function dsaDownloads() {}
+  public function dsaDownloads()
+  {
+    $downloads = Download::where('page', 'forms')->get();
+
+    return view(
+      'user.downloads.forms',
+      [
+        'settings' => $this->settings,
+        'banner' => banner('downloads'),
+        'downloads' => $downloads
+      ]
+    );
+  }
+
+  public function scholarships()
+  {
+
+    return view('user.scholarships', [
+      'settings' => $this->settings,
+      'banner' => banner('scholarship')
+    ]);
+  }
 }

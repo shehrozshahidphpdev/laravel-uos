@@ -228,7 +228,7 @@
                   Table</a>
               </li>
               <li class="dropdown__item"><a href="students\library.html" class="dropdown__item-link">Library</a></li>
-              <li class="dropdown__item"><a href="students\scholarships.html" class="dropdown__item-link">
+              <li class="dropdown__item"><a href="{{ route('user.scholarships') }}" class="dropdown__item-link">
                   Scholarships </a></li>
               <li class="dropdown__item"><a href="students\transportation.html"
                   class="dropdown__item-link">Transportation</a></li>
@@ -247,7 +247,8 @@
         <li class="navigation__item"><a href="">Downloads</a>
           <div class="dropdown downloads-dropdown">
             <ul class="dropdown__items">
-              <li class="dropdown__item"><a href="downloads\forms.html" class="dropdown__item-link">Download
+              <li class="dropdown__item"><a href="{{ route('user.dsa-downloads') }}"
+                  class="dropdown__item-link">Download
                   Forms</a>
               </li>
               <li class="dropdown__item"><a href="{{ route('user.notifications') }}"

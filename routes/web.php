@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OricTeam;
+use App\Http\Controllers\User\QecController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\OricController;
 use App\Http\Controllers\Admin\AuthController;
@@ -13,16 +14,16 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\EditorController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\OricTeamController;
+use App\Http\Controllers\Admin\TableRowController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\TableColumnController;
 use App\Http\Controllers\Admin\OricPublicationController;
-use App\Http\Controllers\Admin\TableRowController;
 use App\Http\Controllers\User\NewsController as UserNews;
 use App\Http\Controllers\User\EventController as UserEvents;
 use App\Http\Controllers\User\AdministrationController as UserAdministration;
 use App\Http\Controllers\User\DirectorateController as UserDirectorateController;
-use App\Http\Controllers\User\QecController;
 
 // USER SIDE ROUTES
 Route::name('user.')->group(function () {
@@ -71,6 +72,8 @@ Route::name('user.')->group(function () {
     ->name('dsa-downloads');
   Route::get('notifications', [HomeController::class, 'notifications'])
     ->name('notifications');
+  Route::get('dsa-scholarship', [HomeController::class, 'scholarships'])
+    ->name('scholarships');
 
   Route::controller(OricController::class)->group(function () {
     Route::get('oric',  'oric')
@@ -406,4 +409,6 @@ Route::prefix('admin/')
         Route::put('update/{id}', 'update')
           ->name('update');
       });
+
+    Route::resource('downloads', DownloadController::class);
   });

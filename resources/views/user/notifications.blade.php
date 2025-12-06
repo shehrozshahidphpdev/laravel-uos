@@ -4,33 +4,35 @@
     Home - Notifications
   </x-slot:title>
   <main class="main">
-    <x-user.hero-banner title="Merit Lists" navigation="Merit List" />
+    <x-user.hero-banner :banner="$banner" navigation="notifications" />
     <section class="downloads">
       <div class="container">
         <aside class="navigation">
           <div class="navigation-container">
             <ul class="navigation__list">
-              <li class="navigation__item"><a href="" class="go">Academics <span class="icon"></span></a></li>
-              <li class="navigation__item "><a href="" class="go">Academics Calender <span class="icon"></span></a>
+              <li class="navigation__item"><a href="{{ route('user.news') }}" class="go">News <span
+                    class="icon"></span></a></li>
+              <li class="navigation__item "><a href="{{ route('user.notifications') }}" class="go">Notifications <span
+                    class="icon"></span></a>
               </li>
-              <li class="navigation__item"><a href="" class="go">Time Table <span class="icon"></span></a></li>
-              <li class="navigation__item"><a href="" class="go">Capcity Building <span class="icon"></span></a></li>
+              <li class="navigation__item"><a href="{{ route('user.notifications') }}" class="go">Download Forms <span
+                    class="icon"></span></a></li>
+              <li class="navigation__item"><a href="{{ route('user.scholarships') }}" class="go">Scholarships <span
+                    class="icon"></span></a></li>
             </ul>
           </div>
         </aside>
         <div class="cards-container">
-          <div class="download-card">
-            <p class="download-card__caption">Standing Accessibility Committe</p>
-            <a href="" class="download-card__link">
-              Download Notification <i class="fa-solid fa-download"></i>
-            </a>
-          </div>
-          <div class="download-card">
-            <p class="download-card__caption">Inquiry Committe Against Workspace Harrasement</p>
-            <a href="" class="download-card__link">
-              Download Notification <i class="fa-solid fa-download"></i>
-            </a>
-          </div>
+          @foreach($downloads as $download)
+            <div class="download-card">
+              <p class="download-card__caption">{{ $download->title }}</p>
+              <a href="{{ asset('storage/admin/uploads/' . $download->file) }}" target="_blank"
+                class="download-card__link">
+                Download Notification <i class="fa-solid fa-download"></i>
+              </a>
+            </div>
+          @endforeach
+
         </div>
     </section>
   </main>

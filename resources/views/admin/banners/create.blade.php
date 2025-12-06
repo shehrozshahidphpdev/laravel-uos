@@ -66,6 +66,9 @@
                       <option value="newsletter">Newsletter</option>
                       <option value="news">News</option>
                       <option value="uni-map">University Map</option>
+                      <option value="downloads">Downloads</option>
+                      <option value="notifications">Notifications</option>
+                      <option value="scholarship">Scholarship</option>
 
                       {{-- qec --}}
                       <option value="qec">QEC</option>

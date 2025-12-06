@@ -76,6 +76,14 @@
 
         {{-- merits --}}
         <li class="nav-item">
+          <a href="{{ route('admin.downloads.index') }}" class="nav-link">
+            <i class="fa-solid fa-arrow-down"></i>
+            <p>Downloads</p>
+          </a>
+        </li>
+
+        {{-- downloads --}}
+        <li class="nav-item">
           <a href="{{ route('admin.merits') }}" class="nav-link">
             <i class="fa-solid fa-medal"></i>
             <p>Merits</p>
