@@ -39,9 +39,9 @@
                     <label for="page" class="form-label">Page</label>
                     <select name="page" class="form-control">
                       <option selected disabled>Select a Page</option>
-                      <option {{ $download->page == 'forms' ? 'selected' : ''  }} value="forms">Forms</option>
-                      <option {{ $download->page == 'notifications' ? 'selected' : ''  }} value="notifications">
-                        Notifications</option>
+                      <option value="forms">Forms</option>
+                      <option value="notifications">Notifications</option>
+                      <option value="prospectus">Prospectus</option>
                     </select>
                   </div>
                 </div>

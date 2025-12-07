@@ -100,7 +100,7 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="faculties\computer-science.html"
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
                         class="dropdown__item-link">computer Science</a></li>
                   </ul>
                 </div>
@@ -112,9 +112,11 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="faculties\BA.html" class="dropdown__item-link">Busines
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                        class="dropdown__item-link">Busines
                         Administration</a></li>
-                    <li class="dropdown__item"><a href="faculties\commerce.html" class="dropdown__item-link">Commerce
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                        class="dropdown__item-link">Commerce
                       </a></li>
                     <li class="dropdown__item"><a href="faculties\economics.html"
                         class="dropdown__item-link">Economics</a></li>
@@ -129,7 +131,8 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="faculties\english.html" class="dropdown__item-link">English</a>
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                        class="dropdown__item-link">English</a>
                     </li>
                   </ul>
                 </div>
@@ -139,7 +142,8 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="faculties\law.html" class="dropdown__item-link">Law</a></li>
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                        class="dropdown__item-link">Law</a></li>
                   </ul>
                 </div>
               </li>
@@ -149,11 +153,12 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="faculties\chemistry.html"
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
                         class="dropdown__item-link">Chemistry</a></li>
-                    <li class="dropdown__item"><a href="faculties\maths.html"
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
                         class="dropdown__item-link">Mathematics</a></li>
-                    <li class="dropdown__item"><a href="faculties\physics.html" class="dropdown__item-link">Physics
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                        class="dropdown__item-link">Physics
                       </a></li>
                   </ul>
                 </div>
@@ -164,7 +169,7 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="faculties\applied-physcology.html"
+                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
                         class="dropdown__item-link">Applied Physcology</a></li>
                   </ul>
                 </div>
@@ -211,11 +216,12 @@
         <li class="navigation__item"><a href="">Admissions</a>
           <div class="dropdown">
             <ul class="dropdown__items">
-              <li class="dropdown__item"><a href="admissions\prospectus.html" class="dropdown__item-link">Prospectus</a>
+              <li class="dropdown__item"><a href="{{ route('user.prospectus') }}"
+                  class="dropdown__item-link">Prospectus</a>
               </li>
               <li class="dropdown__item"><a href="#" class="dropdown__item-link">Online Admission
                   Portal</a></li>
-              <li class="dropdown__item"><a href="admissions\how-to-apply.html" class="dropdown__item-link">How To
+              <li class="dropdown__item"><a href="{{ route('user.apply') }}" class="dropdown__item-link">How To
                   Apply</a></li>
             </ul>
           </div>
@@ -224,21 +230,22 @@
         <li class="navigation__item"><a href="">Students</a>
           <div class="dropdown">
             <ul class="dropdown__items">
-              <li class="dropdown__item"><a href="students\time-table.html" class="dropdown__item-link">Time
+              <li class="dropdown__item"><a href="{{ route('user.time-table') }}" class="dropdown__item-link">Time
                   Table</a>
               </li>
-              <li class="dropdown__item"><a href="students\library.html" class="dropdown__item-link">Library</a></li>
+              <li class="dropdown__item"><a href="{{ route('user.library') }}" class="dropdown__item-link">Library</a>
+              </li>
               <li class="dropdown__item"><a href="{{ route('user.scholarships') }}" class="dropdown__item-link">
                   Scholarships </a></li>
-              <li class="dropdown__item"><a href="students\transportation.html"
+              <li class="dropdown__item"><a href="{{ route('user.transport') }}"
                   class="dropdown__item-link">Transportation</a></li>
-              <li class="dropdown__item"><a href="students\hostel.html" class="dropdown__item-link">Hostel</a>
+              <li class="dropdown__item"><a href="{{ route('user.hostel') }}" class="dropdown__item-link">Hostel</a>
               </li>
-              <li class="dropdown__item"><a href="students\sports.html" class="dropdown__item-link">Sports</a>
+              <li class="dropdown__item"><a href="{{ route('user.sports') }}" class="dropdown__item-link">Sports</a>
               </li>
-              <li class="dropdown__item"><a href="students\regional-plan.html" class="dropdown__item-link">Regional
+              <li class="dropdown__item"><a href="{{ route('user.plan9') }}" class="dropdown__item-link">Regional
                   Plan 9</a></li>
-              <li class="dropdown__item"><a href="students\digital-learning.html" class="dropdown__item-link">HEC's
+              <li class="dropdown__item"><a href="{{ route('user.courseera') }}" class="dropdown__item-link">HEC's
                   and Courseera</a></li>
             </ul>
           </div>

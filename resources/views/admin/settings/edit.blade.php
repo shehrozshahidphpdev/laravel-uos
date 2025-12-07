@@ -1,17 +1,7 @@
-<x-admin.layouts.master>
-  <x-slot:title>
-    Admin | Settings | Edit
-  </x-slot:title>
-  <!--begin::App Content Header-->
+<x-admin.layouts.master title="ttings | Edit">
   <div class="app-content-header">
-    <!--begin::Container-->
     <div class="container-fluid">
-      <!--begin::Row-->
       <div class="row justify-content-end">
-        {{-- <div class="col-sm-6">
-          <h3 class="mb-0">Admin / Profile</h3>
-        </div> --}}
-        {{-- breadcrumbs --}}
         <div class="col-sm-6">
           <x-admin.bread-crumbs :items="$breadCrumbs" />
         </div>
@@ -41,7 +31,7 @@
                   @foreach ($errors->all() as $error)
                     toastr.error("{{ $error }}");
                   @endforeach
-                                                                                                                                                                          });
+                                                                                                                                                                              });
               </script>
             @endif
             <x-base-form action="{{ route('admin.settings.update', $setting->id) }}" method="PUT" :media="true">

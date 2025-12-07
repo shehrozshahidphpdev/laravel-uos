@@ -1,7 +1,4 @@
-<x-admin.layouts.master>
-  <x-slot:title>
-    Admin | Tables
-  </x-slot:title>
+<x-admin.layouts.master title="Admin | Tables | Create">
   <div class="app-content-header">
     <div class="container-fluid">
       <div class="row justify-content-end">
@@ -55,13 +52,13 @@
         $('.add-field').on('click', function (e) {
           e.preventDefault();
           $('.cols-group').append(`
-                        <div class="input-group mt-2">
-                            <input type="text" class="form-control" name="columns[]" placeholder="Enter column name..." />
-                            <button class="btn btn-sm btn-danger remove-field">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-                    `);
+                            <div class="input-group mt-2">
+                                <input type="text" class="form-control" name="columns[]" placeholder="Enter column name..." />
+                                <button class="btn btn-sm btn-danger remove-field">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        `);
         });
 
         // REMOVE FIELD (delegated event)

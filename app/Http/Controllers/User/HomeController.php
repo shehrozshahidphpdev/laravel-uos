@@ -166,12 +166,24 @@ class HomeController extends Controller
     );
   }
 
-  public function scholarships()
+
+  public function prospectus()
+  {
+    $downloads = Download::where('page', 'prospectus')->get();
+
+    return view('user.prospectus', [
+      'banner' => banner('prospectus'),
+      'settings' => $this->settings,
+      'downloads' => $downloads
+    ]);
+  }
+
+  public function apply()
   {
 
-    return view('user.scholarships', [
+    return view('user.how-to-apply', [
+      'banner' => banner('how-to-apply'),
       'settings' => $this->settings,
-      'banner' => banner('scholarship')
     ]);
   }
 }

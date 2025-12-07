@@ -32,12 +32,30 @@
                       <option value="registrar-office">Registrar's Office</option>
                       <option value="vc-office">Vice Chancellor's Office</option>
                       <option value="vice-chancellor-message">Vice Chancellor's Message</option>
+                      <option value="time-table">TimeTable</option>
+                      <option value="library">Library</option>
+                      <option value="transport">Transportation</option>
+                      <option value="hostel">Hostel</option>
+                      <option value="sports">Sports</option>
+                      <option value="plan9">Plan9</option>
+                      <option value="courseera">DLSEI-COURSERA</option>
 
                       <!-- Academics -->
                       <option value="academics">Academics</option>
                       <option value="director-academics">Director of Academics</option>
                       <option value="graduate-studies">Director of Graduate Studies</option>
                       <option value="merit-list">Merit List</option>
+
+                      <option value="cs">Computer Science</option>
+                      <option value="ba">Business Administration</option>
+                      <option value="commerce">Commerce</option>
+                      <option value="economics">Economics</option>
+                      <option value="english">English</option>
+                      <option value="law">Law</option>
+                      <option value="chemistry">Chemistry </option>
+                      <option value="maths">Maths</option>
+                      <option value="physics">Physics</option>
+                      <option value="applied-physcology">Applied Physcology</option>
 
                       <!-- Administration & Departments -->
                       <option value="controller-examination">Director of Controller of Examinations</option>
@@ -69,6 +87,8 @@
                       <option value="downloads">Downloads</option>
                       <option value="notifications">Notifications</option>
                       <option value="scholarship">Scholarship</option>
+                      <option value="prospectus">Prospectus</option>
+                      <option value="how-to-apply">How To Apply</option>
 
                       {{-- qec --}}
                       <option value="qec">QEC</option>

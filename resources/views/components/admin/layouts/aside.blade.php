@@ -74,7 +74,7 @@
         </li>
 
 
-        {{-- merits --}}
+        {{-- downloads --}}
         <li class="nav-item">
           <a href="{{ route('admin.downloads.index') }}" class="nav-link">
             <i class="fa-solid fa-arrow-down"></i>
@@ -82,13 +82,32 @@
           </a>
         </li>
 
-        {{-- downloads --}}
+        {{-- Programs --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.programs.index') }}" class="nav-link">
+            <i class="fa-solid fa-book"></i>
+            <p>Programs</p>
+          </a>
+        </li>
+
+        {{-- sos --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.sos.index') }}" class="nav-link">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <p>SOS</p>
+          </a>
+        </li>
+
+        {{-- merits --}}
         <li class="nav-item">
           <a href="{{ route('admin.merits') }}" class="nav-link">
             <i class="fa-solid fa-medal"></i>
             <p>Merits</p>
           </a>
         </li>
+
+
+
 
         {{-- banner --}}
         <li class="nav-item">

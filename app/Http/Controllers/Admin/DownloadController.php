@@ -68,7 +68,7 @@ class DownloadController extends Controller
       }
 
       Download::create([
-        'title' => $request->title,
+        'title' => strtoupper($request->title),
         'file' => $fileName,
         'page' => $request->page,
       ]);
@@ -140,7 +140,7 @@ class DownloadController extends Controller
       }
 
       Download::where('id', $id)->update([
-        'title' => $request->title,
+        'title' => strtoupper($request->title),
         'file' => $fileName,
         'page' => $request->page,
       ]);

@@ -42,6 +42,9 @@
                       <option selected disabled>Select a Page</option>
                       <option value="forms">Forms</option>
                       <option value="notifications">Notifications</option>
+                      <option value="prospectus">Prospectus</option>
+                      <option value="time-table">Time Table</option>
+                      <option value="transport">transport</option>
                     </select>
                   </div>
                 </div>
