@@ -15,7 +15,7 @@
     <div class="container-fluid">
       {{-- main body cntent goes here --}}
       <div class="row justify-content-center">
-        <div class="row col-md-10">
+        <div class="row col-md-12">
           <div class="card card-primary card-outline mb-4">
             <div class="card-header">
               <div class="card-title">Departments</div>
@@ -27,7 +27,7 @@
                   <div class="mb-3 col">
                     <label for="dept_name" class="form-label">Depratment Name</label>
                     <input type="text" class="form-control" id="dept_name" name="dept_name"
-                      value="{{ old('dept_name') }}" />
+                      value="{{ old('dept_name') }}" placeholder="Enter Depratment Name" />
                   </div>
                   <div class="mb-3 col">
                     <label for="image" class="form-label">Image</label>
@@ -36,7 +36,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="mb-3">
+                  <div class="mb-3 col">
                     <label for="course" class="form-label fw-semibold">Courses</label>
                     <div id="course-wrapper">
                       <div class="d-flex flex-wrap align-items-center gap-2 mb-2 course-group">
@@ -69,12 +69,12 @@
           e.preventDefault();
           console.log('Hello');
           $('.course-group').append(`
-                                        <div class="input-group">
-                                          <input type="text" class="form-control" name="offered_courses[]" placeholder="Enter course name" />
-                                          <button type="button" class="btn btn-sm btn-danger" id="remove-field" title="remove field">
-                                            <i class="bi bi-trash"></i>
-                                          </button>
-                                        </div>`)
+                                                                        <div class="input-group">
+                                                                          <input type="text" class="form-control" name="offered_courses[]" placeholder="Enter course name" />
+                                                                          <button type="button" class="btn btn-sm btn-danger" id="remove-field" title="remove field">
+                                                                            <i class="bi bi-trash"></i>
+                                                                          </button>
+                                                                        </div>`)
         });
         $(document).on('click', '#remove-field', function (e) {
           e.preventDefault();

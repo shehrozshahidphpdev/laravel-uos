@@ -17,21 +17,13 @@
               <div class="card-title">Programs</div>
             </div>
             <x-admin.show-errors />
-            <x-base-form action="{{ route('admin.programs.store') }}" :media="true">
+            <x-base-form action="{{ route(name: 'admin.programs.store') }}" :media="true">
               <div class="card-body">
                 <div class="row">
                   <div class="mb-3 col">
-                    <label for="program_name" class="form-label">Program Name</label> <span class="text-danger">*</span>
-                    <input type="text" class="form-control" name="program_name" id="program_name"
-                      placeholder="Enter Program Name" value="{{ old('program_name', '') }}" />
-                  </div>
-                  <div class="mb-3 col">
-                    <label for="members" class="form-label">Status</label>
-                    <select name="is_active" id="is_active" class="form-select">
-                      <option value="" selected disabled>Please Select Sataus</option>
-                      <option value="1">Active</option>
-                      <option value="0">Non Active</option>
-                    </select>
+                    <label for="subject" class="form-label">Subject</label> <span class="text-danger">*</span>
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Enter Subject"
+                      value="{{ old('subject', '') }}" />
                   </div>
                 </div>
               </div>

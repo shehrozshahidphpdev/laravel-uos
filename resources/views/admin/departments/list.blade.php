@@ -32,6 +32,7 @@
                 <th>Dept Name</th>
                 <th>Image</th>
                 <th>Offered Courses</th>
+                <th>Slug</th>
                 <th>Created At</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -46,7 +47,8 @@
                     <img src="{{ asset('storage/admin/uploads/' . $department->image) }}" class="rounded img-thumbnail"
                       width="100" alt="Department Image">
                   </td>
-                  <td>{{ implode('- ', array: $department->offered_courses) }}</td>
+                  <td>{{ Str::limit(implode('- ', array: $department->offered_courses), 20) }}</td>
+                  <td>{{ $department->slug }}</td>
                   <td>{{ $department->created_at->format('Y-m-d') }}</td>
                   <td>
                     <a href="{{ route('admin.department.edit', $department->id) }}" class="btn btn-sm btn-primary">

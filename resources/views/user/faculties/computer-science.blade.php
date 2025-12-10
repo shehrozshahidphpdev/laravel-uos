@@ -7,7 +7,8 @@
         <div class="hero-content">
           <article class="introduction">
             <h2 class="introduction__title">Introduction</h2>
-            <p class="introduction__content">Keeping in view the importance of computer science for the country,
+            <p class="introduction__content">
+              Keeping in view the importance of computer science for the country,
               Department of Computer Science was established at BZU Sub-Campus Sahiwal in 2014. Currently,
               Department of Computer Science is offering BS Computer Science (BS CS) (4 Years) degree programs in
               morning and evening sessions. In addition to these degree programs many short courses and workshops are
@@ -18,37 +19,19 @@
               professional software tools and provide services such as HEC digital Library,
               video conference etc. The students and staff have access to Internet facilitates during working hours.
             </p>
-
-            <span class="additional__title">Vision</span>
-            <p class="additional__content">
-              “Our Vision is to provide academic and professional skill to the students so that they can excel in their
-              lives.” BS Accounting and Finance: The program of BS Accounting and Finance has a great demand in the
-              market and will attract more job opportunity for students of the department. To get admission in our BS
-              Accounting & Finance the student should be highly motivated and passionate for learning.
-              The basic requirements are as follows:
-            <ol class="vision">
-              <li class="vision__point additional__content">The student has acquired minimum of 12 years or equivalent
-                education in any field with at least 45%
-                marks in the last examination.</li>
-              <li class="vision__point additional__content">The student has attained a minimum age permissible in the
-                admission policy of the University of
-                Sahiwal.</li>
-            </ol>
-            </p>
-
             <div class="courses">
               <div class="course-list">
                 <div class="course-item">
                   <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS Commerce</p>
+                  <p class="course-item__name">BS Computer Science</p>
                 </div>
                 <div class="course-item">
                   <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS acoounting And Finanace</p>
+                  <p class="course-item__name">BS Information Technology</p>
                 </div>
                 <div class="course-item">
                   <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS Banking & Finanace</p>
+                  <p class="course-item__name">BS Software Engineering</p>
                 </div>
               </div>
           </article>
@@ -111,7 +94,8 @@
 
         <aside class="navigation">
           <ul class="navigation__list">
-            <li class="navigation__item"><a href="#" class="navigation__link">Department</a></li>
+            <li class="navigation__item"><a href="{{ route('user.department.departmentPage', 'computer-science') }}"
+                class="navigation__link">Department</a></li>
             <li class="navigation__item"><a href="#" class="navigation__link">Chairman</a></li>
             <li class="navigation__item"><a href="#" class="navigation__link">Faculty</a></li>
             <li class="navigation__item"><a href="#" class="navigation__link">Research Group</a></li>

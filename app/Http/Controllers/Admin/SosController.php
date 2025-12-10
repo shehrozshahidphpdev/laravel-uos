@@ -15,13 +15,17 @@ class SosController extends Controller
    */
   public function index()
   {
+    $schemes = ProgramScheme::with('program')->get();
+
+    // return $schemes;
+
     $breadCrumbs = [
       [
         'label' => 'Sos',
       ]
     ];
 
-    return view('admin.sos.list', compact('breadCrumbs'));
+    return view('admin.sos.list', compact('breadCrumbs', 'schemes'));
   }
 
   /**
@@ -32,7 +36,7 @@ class SosController extends Controller
     $breadCrumbs = [
       [
         'label' => 'Sos',
-        'url' => route('admin.sos.create')
+        'url' => route('admin.sos.index')
       ],
       [
         'label' => 'Create',
@@ -50,14 +54,16 @@ class SosController extends Controller
   {
     // dd($request->all());
     $request->validate([
-      'program_id' => 'required'
+      'subject_id' => 'required',
+      'program_title' => 'required',
     ], [
-      'table_id.required' => 'Please Select a table first'
+      'subject_id.required' => 'Please Select a table first'
     ]);
 
     try {
       ProgramScheme::create([
-        'program_id' => $request->program_id,
+        'subject_id' => $request->subject_id,
+        'program_title' => ucwords($request->program_title),
         'courses' => $request->courses,
       ]);
 
@@ -82,7 +88,26 @@ class SosController extends Controller
    */
   public function edit(string $id)
   {
-    //
+    $breadCrumbs = [
+      [
+        'label' => 'Sos',
+        'url' => route('admin.sos.index')
+      ],
+      [
+        'label' => 'Edit',
+      ]
+    ];
+    $scheme = ProgramScheme::with('program')->findOrFail($id);
+    $programs = Program::all(); // To populate the dropdown
+
+    // return $scheme;
+
+
+    return view('admin.sos.edit', [
+      'scheme' => $scheme,
+      'programs' => $programs,
+      'breadCrumbs' => $breadCrumbs
+    ]);
   }
 
   /**
@@ -90,7 +115,27 @@ class SosController extends Controller
    */
   public function update(Request $request, string $id)
   {
-    //
+
+    $request->validate([
+      'subject_id' => 'required',
+      'program_title' => 'required',
+    ], [
+      'subject_id.required' => 'Please Select a table first'
+    ]);
+
+    try {
+      ProgramScheme::where('id', $id)->update([
+        'subject_id' => $request->subject_id,
+        'program_title' => $request->program_title,
+        'courses' => $request->courses,
+      ]);
+
+      return to_route('admin.sos.index')
+        ->with('message', 'Record Updated Successfully');
+    } catch (\Exception $e) {
+      Log::error('Insertion Failed' . $e->getMessage());
+      return redirect()->back();
+    }
   }
 
   /**

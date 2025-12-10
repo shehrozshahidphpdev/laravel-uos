@@ -21,12 +21,11 @@
             <x-base-form action="{{ route('admin.banner.store') }}" :media="true">
               <div class="card-body">
                 <div class="row">
-                  <div class="mb-3 col">
+                  {{-- <div class="mb-3 col">
                     <label for="page" class="form-label">Page</label>
                     <select name="page" class="form-control" id="page">
                       <option selected disabled> Select a Page </option>
 
-                      <!-- University Overview -->
                       <option value="chancellor-message">Chancellor's Message</option>
                       <option value="introduction">Introduction</option>
                       <option value="registrar-office">Registrar's Office</option>
@@ -40,7 +39,6 @@
                       <option value="plan9">Plan9</option>
                       <option value="courseera">DLSEI-COURSERA</option>
 
-                      <!-- Academics -->
                       <option value="academics">Academics</option>
                       <option value="director-academics">Director of Academics</option>
                       <option value="graduate-studies">Director of Graduate Studies</option>
@@ -57,7 +55,6 @@
                       <option value="physics">Physics</option>
                       <option value="applied-physcology">Applied Physcology</option>
 
-                      <!-- Administration & Departments -->
                       <option value="controller-examination">Director of Controller of Examinations</option>
                       <option value="dsa">Director of Student Affairs</option>
                       <option value="estate-management">Director of Estate Management</option>
@@ -70,14 +67,12 @@
                       <option value="sustainability">Director of Sustainability</option>
                       <option value="treasure-office">Director of Treasury Office</option>
 
-                      <!-- ORIC Specific -->
                       <option value="oric">Director of ORIC</option>
                       <option value="oric-partner">ORIC Partners</option>
                       <option value="oric-publications">ORIC Publications</option>
                       <option value="oric-publications-summary">ORIC Publications Summary</option>
                       <option value="oric-team">ORIC Team</option>
 
-                      <!-- Campus & Resources -->
                       <option value="contact-us">Contact Us</option>
                       <option value="dsa-downloads">DSA Downloads</option>
                       <option value="events">Events</option>
@@ -90,22 +85,19 @@
                       <option value="prospectus">Prospectus</option>
                       <option value="how-to-apply">How To Apply</option>
 
-                      {{-- qec --}}
                       <option value="qec">QEC</option>
                     </select>
 
-                  </div>
+                  </div> --}}
                   <div class="mb-3 col">
                     <label for="banner" class="form-label">Banner</label>
                     <input type="file" class="form-control" id="banner" name="banner" value="" />
                     <img id="preview" width="100" class="mt-2" />
                   </div>
-                </div>
-                <div class="row">
                   <div class="mb-3 col">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}"
-                      placeholder="e.g Latest News" />
+                      placeholder="example: latest news" />
                   </div>
                 </div>
               </div>

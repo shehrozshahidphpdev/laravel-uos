@@ -867,6 +867,9 @@ a {
   border-radius: 10px;
   background-color: #fefefe;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .department .container .department__cards-container .department__card-header {
   overflow: hidden;
@@ -890,6 +893,7 @@ a {
   flex-direction: column;
   gap: 1rem;
   padding-bottom: 3rem;
+  flex: 1;
 }
 .department .container .department__cards-container .department__card-content-title {
   font-size: 2rem;
@@ -901,6 +905,7 @@ a {
 }
 .department .container .department__cards-container .department__card-content-footer {
   color: #ffc107;
+  margin-top: auto;
 }
 .department .container .department__cards-container .department__card-content-footer a {
   text-decoration: none;

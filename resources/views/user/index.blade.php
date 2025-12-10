@@ -179,12 +179,9 @@
                   {{ $course }}
                   <br>
                 @endforeach
-                {{-- BS Applied Psychology (4 Years)
-                ADCP (1 Year)
-                MS Clinical Psychology --}}
               </p>
               <span class="department__card-content-footer">
-                <a href="">Detail</a>
+                <a href="{{ route('user.department.departmentPage', $department->slug) }}">Detail</a>
                 <i class="fa-solid fa-arrow-right"></i>
               </span>
             </div>

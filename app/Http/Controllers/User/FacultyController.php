@@ -5,42 +5,42 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Models\Admin\Setting;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Department;
 use App\Models\Admin\ProgramScheme;
 
 class FacultyController extends Controller
 {
   public $settings;
 
-  /**
-   * Class constructor.
-   */
   public function __construct()
   {
     $this->settings = Setting::first();
   }
 
-  public function computerScience()
+  public function departmentPage($slug)
   {
-    $computerScienceScheme = ProgramScheme::with('program')
-      ->whereHas('program', function ($q) {
-        $q->where('program_name', 'Computer Science');
+    // dd('here');
+
+    $pages = Department::pluck('slug')->toArray();
+
+    // return $pages;
+
+    if (!in_array($slug, $pages)) {
+      return view('404');
+    }
+
+    $allSchemes = ProgramScheme::with('program')
+      ->whereHas('program', function ($q) use ($slug) {
+        $q->where('subject', $slug);
       })
-      ->first();
-
-    $informationTechnologyScheme = ProgramScheme::with('program')
-      ->whereHas('program', function ($q) {
-        $q->where('program_name', 'Information Technology');
-      })
-      ->first();
-
-    // $programs = ProgramScheme::with('program')->get();
-    // return $programs;
-
-    return view('user.faculties.cs', [
-      'settings' => $this->settings,
-      'banner' => banner('cs'),
-      'computerScienceScheme' => $computerScienceScheme,
-      'informationTechnologyScheme' => $informationTechnologyScheme
+      ->get();
+    /*
+      💀view name must follow the slug
+    */
+    return view("user.faculties.$slug", [
+      'settings'   => $this->settings,
+      'banner'     => banner($slug),
+      'allSchemes' => $allSchemes,
     ]);
   }
 }

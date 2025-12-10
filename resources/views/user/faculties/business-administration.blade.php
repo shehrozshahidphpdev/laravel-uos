@@ -21,34 +21,65 @@
 
             <span class="additional__title">Vision</span>
             <p class="additional__content">
-              “Our Vision is to provide academic and professional skill to the students so that they can excel in their
-              lives.” BS Accounting and Finance: The program of BS Accounting and Finance has a great demand in the
-              market and will attract more job opportunity for students of the department. To get admission in our BS
-              Accounting & Finance the student should be highly motivated and passionate for learning.
-              The basic requirements are as follows:
-            <ol class="vision">
-              <li class="vision__point additional__content">The student has acquired minimum of 12 years or equivalent
-                education in any field with at least 45%
-                marks in the last examination.</li>
-              <li class="vision__point additional__content">The student has attained a minimum age permissible in the
-                admission policy of the University of
-                Sahiwal.</li>
-            </ol>
+              Our vision is to be recognized as a prestigious business school in Punjab that aims at developing socially
+              responsible leaders, equipped with real-world expertise such as business acumen, leadership and management
+              skills, communication skills, problem-solving abilities, entrepreneurial and innovative mindset,
+              contributing to viable solutions to the real-world problems such as financial challenges, market
+              competition, customer retention and satisfaction, supply chain management, and technology integration and
+              innovation.
             </p>
+
+
+            <span class="additional__title">Mission</span>
+            <p class="additional__content">
+              To realize our vision, the department strives to involve qualified and dynamic research scholars as well
+              as industry experts. This initiative is geared towards providing our students with the latest knowledge
+              and industry best practices. Moreover, the department places a strong emphasis on the continuous training
+              and development of both students and faculty members. The overarching goal is to foster socially and
+              environmentally responsible leaders while nurturing critical thinking skills. Additionally, the department
+              is actively working towards enhancing its infrastructure by developing and acquiring resources such as
+              library and classroom facilities. This investment is aimed at creating a conducive teaching and learning
+              environment within the department.
+            </p>
+
+            <span class="additional__title">Values</span>
+            <p class="additional__content">
+              To realize our vision, the department strives to involve qualified and dynamic research scholars as well
+              as industry experts.
+            </p>
+            </p>
+            <ul class="values">
+              <li class="additional__content values__item">Honesty and Integrity</li>
+              <li class="additional__content values__item">Honesty and Integrity</li>
+              <li class="additional__content values__item">Social and environmental responsibility</li>
+              <li class="additional__content values__item">Discipline</li>
+              <li class="additional__content values__item">Punctuality</li>
+              <li class="additional__content values__item">Impactful</li>
+            </ul>
 
             <div class="courses">
               <div class="course-list">
                 <div class="course-item">
                   <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS Commerce</p>
+                  <p class="course-item__name">BBA</p>
                 </div>
                 <div class="course-item">
                   <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS acoounting And Finanace</p>
+                  <p class="course-item__name">BBIS</p>
                 </div>
                 <div class="course-item">
                   <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS Banking & Finanace</p>
+                  <p class="course-item__name">EMBA</p>
+                </div>
+
+                <div class="course-item">
+                  <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
+                  <p class="course-item__name">MS Business Administration</p>
+                </div>
+
+                <div class="course-item">
+                  <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
+                  <p class="course-item__name">PHD Business Administration</p>
                 </div>
               </div>
           </article>

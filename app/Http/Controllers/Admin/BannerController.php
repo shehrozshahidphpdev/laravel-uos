@@ -10,15 +10,58 @@ use App\Http\Controllers\Controller;
 
 class BannerController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    $banners = Banner::all();
+    $query = $request->search;
+
+    if (!empty($query)) {
+      $banners = Banner::where('title', 'like', "%$query%")->get();
+    } else {
+      $banners = Banner::all();
+    }
+    // If request is AJAX → return only table rows HTML
+    if ($request->ajax()) {
+
+      $html = '';
+      foreach ($banners as $banner) {
+        $html .= '
+                <tr class="align-middle">
+                    <td>' . $banner->id . '</td>
+                    <td>' . Str::limit($banner->slug, 20) . '</td>
+                    <td>' . Str::limit($banner->title, 20) . '</td>
+                    <td><img src="' . asset("storage/admin/uploads/" . $banner->banner) . '" class="img-thumbnail" width="100"></td>
+                    <td>
+                        <a href="' . route('admin.banner.edit', $banner->id) . '" class="btn btn-sm btn-primary">
+                            <i class="bi bi-pencil-fill"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <form action="' . route('admin.banner.delete', $banner->id) . '" class="delete-record" data-id="' . $banner->id . '">
+                          <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>';
+      }
+
+      if ($banners->count() === 0) {
+        $html = '<tr><td colspan="12" class="text-center text-muted py-3">Sorry! No Data Found</td></tr>';
+      }
+
+      return response()->json(['html' => $html]);
+    }
+
+    // Normal page load view
     $breadCrumbs = [
-      [
-        'label' => 'Banners',
-      ]
+      ['label' => 'Banners']
     ];
-    return view('admin.banners.list', compact('breadCrumbs', 'banners'));
+
+    return view(
+      'admin.banners.list',
+      compact(
+        'breadCrumbs',
+        'banners'
+      )
+    );
   }
 
   public function create()
@@ -38,8 +81,8 @@ class BannerController extends Controller
   public function store(Request $request)
   {
     // dd($request->all());
+
     $request->validate([
-      'page' => 'required',
       'banner' => 'nullable|mimes:png,jpg,jpeg|max:5048',
       'title' => 'required',
     ]);
@@ -51,12 +94,11 @@ class BannerController extends Controller
         $file->storeAs('admin/uploads/',  $fileName, 'public');
       }
 
-      $page = Str::slug($request->page);
 
       Banner::create([
-        'page' =>  $page,
-        'banner' => $fileName,
         'title' => strtoupper($request->title),
+        'slug' =>  strtolower(Str::slug($request->title)),
+        'banner' => $fileName,
       ]);
 
       return to_route('admin.banners')->with('message', 'Record Created Successfully');
@@ -89,7 +131,6 @@ class BannerController extends Controller
   {
     $banner = Banner::findOrFail($request->id);
     $request->validate([
-      'page' => 'required',
       'banner' => 'nullable|mimes:png,jpg,jpeg|max:5048',
       'title' => 'required',
     ]);
@@ -111,7 +152,7 @@ class BannerController extends Controller
       $page = Str::slug($request->page);
 
       Banner::where('id', $id)->update([
-        'page' =>  $page,
+        'slug' =>  strtolower(Str::slug($request->title)),
         'banner' => $fileName,
         'title' => $request->title,
       ]);

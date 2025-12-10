@@ -25,8 +25,7 @@
             <thead>
               <tr>
                 <th style="width: 10px">#</th>
-                <th>Program Name</th>
-                <th>status</th>
+                <th>Subject Name</th>
                 <th>Created At</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -36,12 +35,8 @@
               @forelse ($programs as $program)
                 <tr class="align-middle">
                   <td>{{ $program->id }}</td>
-                  <td>{{ $program->program_name }}</td>
-                  <td>
-                    <span class="badge rounded-pill bg-{{ $program->is_active ? 'success' : 'danger' }}">
-                      {{ $program->is_active ? 'Active' : 'Inactive' }}
-                    </span>
-                  </td>
+                  <td>{{ $program->subject }}</td>
+
                   <td>{{ $program->created_at->format('Y-m-d') }}</td>
                   <td>
                     <a href="{{ route('admin.programs.edit', $program->id) }}" class="btn btn-sm btn-primary">

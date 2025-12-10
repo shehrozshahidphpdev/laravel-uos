@@ -13,8 +13,7 @@ return new class extends Migration
   {
     Schema::create('programs', function (Blueprint $table) {
       $table->id();
-      $table->string('program_name');
-      $table->boolean('is_active')->default(1);
+      $table->string('subject');
       $table->timestamps();
     });
   }

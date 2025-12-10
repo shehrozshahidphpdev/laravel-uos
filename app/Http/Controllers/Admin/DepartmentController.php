@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Admin\Department;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Department;
 
 class DepartmentController extends Controller
 {
@@ -40,6 +41,7 @@ class DepartmentController extends Controller
   }
   public function store(Request $request)
   {
+
     $validations = $request->validate([
       'dept_name' => 'required|min:3',
       'image' => 'required|mimes:png,jpg|max:2048',
@@ -56,6 +58,7 @@ class DepartmentController extends Controller
       $department = Department::create([
         'dept_name' => $request->dept_name,
         'image' => $imageName,
+        'slug' => Str::slug(strtolower($request->dept_name)),
         'offered_courses' => $request->offered_courses
       ]);
 
@@ -68,7 +71,6 @@ class DepartmentController extends Controller
       return redirect()->back()
         ->with('message', "Something, went wrong Please Try Again Later");
     }
-    // dd($request->file('image'));
   }
 
 

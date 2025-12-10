@@ -100,7 +100,8 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a
+                        href="{{ route('user.department.departmentPage', 'computer-science') }}"
                         class="dropdown__item-link">computer Science</a></li>
                   </ul>
                 </div>
@@ -112,13 +113,14 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a
+                        href="{{ route('user.department.departmentPage', 'business-administration') }}"
                         class="dropdown__item-link">Busines
                         Administration</a></li>
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a href="{{ route('user.department.departmentPage', 'commerce') }}"
                         class="dropdown__item-link">Commerce
                       </a></li>
-                    <li class="dropdown__item"><a href="faculties\economics.html"
+                    <li class="dropdown__item"><a href="{{ route('user.department.departmentPage', 'economics') }}"
                         class="dropdown__item-link">Economics</a></li>
                   </ul>
                 </div>
@@ -131,7 +133,7 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a href="{{ route('user.department.departmentPage', 'english') }}"
                         class="dropdown__item-link">English</a>
                     </li>
                   </ul>
@@ -142,7 +144,7 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a href="{{ route('user.department.departmentPage', 'law') }}"
                         class="dropdown__item-link">Law</a></li>
                   </ul>
                 </div>
@@ -153,11 +155,11 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a href="{{ route('user.department.departmentPage', 'chemistry') }}"
                         class="dropdown__item-link">Chemistry</a></li>
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a href="{{ route('user.department.departmentPage', 'mathematics') }}"
                         class="dropdown__item-link">Mathematics</a></li>
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a href="{{ route('user.department.departmentPage', 'physics') }}"
                         class="dropdown__item-link">Physics
                       </a></li>
                   </ul>
@@ -169,7 +171,8 @@
                 <!-- side items  -->
                 <div class="dropdown__side">
                   <ul class="dropdown__submenu dropdown-items">
-                    <li class="dropdown__item"><a href="{{ route('user.department.computer-science') }}"
+                    <li class="dropdown__item"><a
+                        href="{{ route('user.department.departmentPage', 'applied-physcology') }}"
                         class="dropdown__item-link">Applied Physcology</a></li>
                   </ul>
                 </div>

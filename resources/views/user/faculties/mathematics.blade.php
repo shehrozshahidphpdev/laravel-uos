@@ -7,50 +7,19 @@
         <div class="hero-content">
           <article class="introduction">
             <h2 class="introduction__title">Introduction</h2>
-            <p class="introduction__content">Keeping in view the importance of computer science for the country,
-              Department of Computer Science was established at BZU Sub-Campus Sahiwal in 2014. Currently,
-              Department of Computer Science is offering BS Computer Science (BS CS) (4 Years) degree programs in
-              morning and evening sessions. In addition to these degree programs many short courses and workshops are
-              arranged by the department time to time. The students in Department of Computer Science have unlimited
-              access to the computers & the professional software tools. The Department has modern computer lab
-              equipped with latest computing technology. The department of Computer Science has two computer labs
-              equipped with state-of-the-art technology. All the computers are equipped with latest technology & the
-              professional software tools and provide services such as HEC digital Library,
-              video conference etc. The students and staff have access to Internet facilitates during working hours.
+            <p class="introduction__content">
+              Study of the world of atoms, molecules, liquids, solids and gases is concerned with the knowledge of
+              Chemistry. Chemists are both architects and students of miniature universe, involved in discovering the
+              changes that occurs, exploring the principles that govern on these changes. History told us about the
+              triumphs of chemistry in the fields of agricultural and medicinal products. Currently chemistry has
+              revealed the modem ways of achieving aims and objectives in the fields of solar cells, semiconductor,
+              superconductor, optical fiber, clean fuels, chemical memory, batteries and solution to various
+              environmental issues. Chemistry department University of Sahiwal was established in 2014, department is
+              offering program according to HEC course outline and has highly qualified, committed and excellent
+              faculty. The future of the chemistry graduates is bright in different fields, e.g. Medical, Fertilizers,
+              Cosmetics, Textiles, Food, New materials, Petrochemicals, Plastics, Alternative energy sources, Nano
+              technology and Space Technology etc.
             </p>
-
-            <span class="additional__title">Vision</span>
-            <p class="additional__content">
-              “Our Vision is to provide academic and professional skill to the students so that they can excel in their
-              lives.” BS Accounting and Finance: The program of BS Accounting and Finance has a great demand in the
-              market and will attract more job opportunity for students of the department. To get admission in our BS
-              Accounting & Finance the student should be highly motivated and passionate for learning.
-              The basic requirements are as follows:
-            <ol class="vision">
-              <li class="vision__point additional__content">The student has acquired minimum of 12 years or equivalent
-                education in any field with at least 45%
-                marks in the last examination.</li>
-              <li class="vision__point additional__content">The student has attained a minimum age permissible in the
-                admission policy of the University of
-                Sahiwal.</li>
-            </ol>
-            </p>
-
-            <div class="courses">
-              <div class="course-list">
-                <div class="course-item">
-                  <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS Commerce</p>
-                </div>
-                <div class="course-item">
-                  <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS acoounting And Finanace</p>
-                </div>
-                <div class="course-item">
-                  <div class="course-item__icon"><i class="fa-solid fa-check"></i></div>
-                  <p class="course-item__name">BS Banking & Finanace</p>
-                </div>
-              </div>
           </article>
 
           <section class="sos">

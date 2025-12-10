@@ -36,18 +36,18 @@
             <thead>
               <tr>
                 <th style="width: 10px">#</th>
-                <th>Page</th>
+                <th>Slug</th>
                 <th>Title</th>
                 <th>Banner</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="banner-table-body">
               @forelse ($banners as $banner)
                 <tr class="align-middle">
                   <td>{{ $banner->id }}</td>
-                  <td>{{ Str::limit($banner->page, 20, '...') }}</td>
+                  <td>{{ Str::limit($banner->slug, 20, '...') }}</td>
                   <td>{{ Str::limit($banner->title, 20)}}</td>
                   <td>
                     <img src="{{ asset('storage/admin/uploads/' . $banner->banner) }}" class="rounded img-thumbnail"
@@ -111,6 +111,20 @@
             },
           })
         })
+        // LIVE SEARCH
+        $('input[name="search"]').on('keyup', function () {
+          let value = $(this).val();
+
+          $.ajax({
+            url: "{{ route('admin.banners') }}",
+            type: "GET",
+            data: { search: value },
+            success: function (res) {
+              $("#banner-table-body").html(res.html);
+            }
+          });
+        });
+
       })
     </script>
   @endpush

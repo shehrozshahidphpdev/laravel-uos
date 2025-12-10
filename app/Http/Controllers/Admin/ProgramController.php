@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\Program;
 use Illuminate\Support\Facades\Log;
@@ -52,13 +53,12 @@ class ProgramController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'program_name' => 'required|unique:programs,program_name',
+      'subject' => 'required|unique:programs,subject',
     ]);
 
     try {
       Program::create([
-        'program_name' => ucwords($request->program_name),
-        'is_active' => $request->is_active
+        'subject' => Str::slug($request->subject),
       ]);
 
       return to_route('admin.programs.index')
@@ -105,13 +105,12 @@ class ProgramController extends Controller
   public function update(Request $request, string $id)
   {
     $request->validate([
-      'program_name' => 'required|unique:programs,program_name,' . $id,
+      'subject' => 'required|unique:programs,subject,' . $id,
     ]);
 
     try {
       Program::where('id', $id)->update([
-        'program_name' => ucwords($request->program_name),
-        'is_active' => $request->is_active
+        'subject' => Str::slug($request->subject),
       ]);
 
       return to_route('admin.programs.index')

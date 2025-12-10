@@ -105,29 +105,14 @@ Route::name('user.')->group(function () {
       ->name('courseera');
   });
 
-
-
-  // faculty module
+  // FACULTY MODULE
   Route::controller(FacultyController::class)
     ->prefix('depart/')
     ->name('department.')
     ->group(function () {
-      Route::get('computer-science',  'computerScience')
-        ->name('computer-science');
-      Route::get('time-table',  'timeTable')
-        ->name('time-table');
-      Route::get('library',  'library')
-        ->name('library');
-      Route::get('transport',  'transport')
-        ->name('transport');
-      Route::get('hostel',  'hostel')
-        ->name('hostel');
-      Route::get('sports',  'sports')
-        ->name('sports');
-      Route::get('plan9',  'plan9')
-        ->name('plan9');
-      Route::get('DlseiCoursera',  'courseera')
-        ->name('courseera');
+
+      Route::get('{slug}', 'departmentPage')
+        ->name('departmentPage');
     });
 
 
@@ -371,6 +356,8 @@ Route::prefix('admin/')
           ->name('banner.edit');
         Route::put('banner/update/{id}', 'update')
           ->name('banner.update');
+        // Route::get('banner/search',  'search')
+        //   ->name('banner.search');
       });
 
 
@@ -468,6 +455,11 @@ Route::prefix('admin/')
       });
 
     Route::resource('downloads', DownloadController::class);
-    Route::resource('programs', ProgramController::class);
     Route::resource('sos', SosController::class);
+    Route::resource('programs', ProgramController::class);
   });
+
+
+Route::fallback(function () {
+  return view('404');
+});

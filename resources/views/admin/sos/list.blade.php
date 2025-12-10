@@ -27,52 +27,39 @@
             <thead>
               <tr>
                 <th style="width: 10px">#</th>
-                <th>Table Name</th>
-                <th>Columns</th>
+                <th>Subject</th>
+                <th>Program Title</th>
                 <th>Created At</th>
-                <th>View Rows</th>
-                <th>create Rows</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-              {{-- @forelse ($tablesColumns as $tablesColumn)
-              <tr class="align-middle">
-                <td>{{ $tablesColumn->id }}</td>
-                <td>{{ $tablesColumn->table->title }}</td>
-                <td>{{ Str::limit(implode(', ', $tablesColumn->columns), 20) }}</td>
+              @forelse ($schemes as $scheme)
+                <tr class="align-middle">
+                  <td>{{ $scheme->id }}</td>
+                  <td>{{ $scheme->program->subject }}</td>
+                  <td>{{ $scheme->program_title }}</td>
+                  <td>{{ $scheme->created_at->format('Y-m-d') }}</td>
 
-                <td>{{ $tablesColumn->created_at->format('Y-m-d') }}</td>
-                <td>
-                  <a href="{{ route('admin.tables-rows.index', $tablesColumn->table_id) }}"
-                    class="btn btn-sm btn-success">
-                    <i class="fa-solid fa-eye"></i>
-                  </a>
-                </td>
-                <td>
-                  <a href="{{ route('admin.tables-rows.create', $tablesColumn->id) }}" class="btn btn-sm btn-info">
-                    <i class="bi bi-pencil-fill text-white"></i>
-                  </a>
-                </td>
-                <td>
-                  <a href="{{ route('admin.tables-columns.edit', $tablesColumn->id) }}" class="btn btn-sm btn-primary">
-                    <i class="bi bi-pencil-fill"></i>
-                  </a>
-                </td>
-                <td> <x-base-form action="{{ route('admin.tables-columns.delete', $tablesColumn->id) }}"
-                    class="delete-record" data-id="{{ $tablesColumn->id }}">
-                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                  </x-base-form>
-                </td>
-              </tr>
+                  <td>
+                    <a href="{{ route('admin.sos.edit', $scheme->id) }}" class="btn btn-sm btn-primary">
+                      <i class="bi bi-pencil-fill"></i>
+                    </a>
+                  </td>
+                  <td> <x-base-form action="{{ route('admin.tables-columns.delete', $scheme->id) }}" class="delete-record"
+                      data-id="{{ $scheme->id }}">
+                      <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                    </x-base-form>
+                  </td>
+                </tr>
               @empty
-              <tr>
-                <td colspan="12" class="text-center text-muted py-3">
-                  Sorry! No Data Found
-                </td>
-              </tr>
-              @endforelse --}}
+                <tr>
+                  <td colspan="12" class="text-center text-muted py-3">
+                    Sorry! No Data Found
+                  </td>
+                </tr>
+              @endforelse
             </tbody>
           </table>
         </div>

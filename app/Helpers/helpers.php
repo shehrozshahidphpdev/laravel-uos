@@ -6,7 +6,7 @@ use App\Models\Admin\Profile;
 if (!function_exists('banner')) {
   function banner(string  $page): object
   {
-    return Banner::where('page', $page)->first();
+    return Banner::where('slug', $page)->first();
   }
 }
 

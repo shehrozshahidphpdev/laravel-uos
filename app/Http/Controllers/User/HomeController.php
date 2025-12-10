@@ -22,7 +22,7 @@ class HomeController extends Controller
   public function index()
   {
     $settings = Setting::first();
-    $departments = Department::all();
+    $departments = Department::orderBy('dept_name')->get();
     $events = Event::all();
     $news = News::where('is_active', '=', 1)->get();
     return view(
