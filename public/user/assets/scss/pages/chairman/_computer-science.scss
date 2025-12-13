@@ -76,6 +76,19 @@
                 color: #777777;
               }
             }
+
+            .details-btn {
+              display: inline-block;
+              color: white;
+              background: $primary-yellow;
+              border-radius: 5px;
+              padding: 0.8rem 1.3rem;
+              font-size: 1.2rem;
+
+              &:hover {
+                background: navajowhite;
+              }
+            }
           }
 
         }

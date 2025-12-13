@@ -50,7 +50,6 @@ class BannerController extends Controller
       return response()->json(['html' => $html]);
     }
 
-    // Normal page load view
     $breadCrumbs = [
       ['label' => 'Banners']
     ];
@@ -85,6 +84,7 @@ class BannerController extends Controller
     $request->validate([
       'banner' => 'nullable|mimes:png,jpg,jpeg|max:5048',
       'title' => 'required',
+      'slug' => 'required',
     ]);
 
     try {
@@ -97,7 +97,7 @@ class BannerController extends Controller
 
       Banner::create([
         'title' => strtoupper($request->title),
-        'slug' =>  strtolower(Str::slug($request->title)),
+        'slug' =>  strtolower(Str::slug(title: $request->slug)),
         'banner' => $fileName,
       ]);
 
@@ -129,10 +129,13 @@ class BannerController extends Controller
 
   public function update(string $id, Request $request)
   {
+    // dd($request->all());
+
     $banner = Banner::findOrFail($request->id);
     $request->validate([
       'banner' => 'nullable|mimes:png,jpg,jpeg|max:5048',
       'title' => 'required',
+      'slug' => 'required'
     ]);
 
     try {
@@ -149,12 +152,10 @@ class BannerController extends Controller
         $file->storeAs('admin/uploads/',  $fileName, 'public');
       }
 
-      $page = Str::slug($request->page);
-
       Banner::where('id', $id)->update([
-        'slug' =>  strtolower(Str::slug($request->title)),
         'banner' => $fileName,
-        'title' => $request->title,
+        'slug' =>  strtolower(Str::slug(title: $request->slug)),
+        'title' => strtoupper($request->title),
       ]);
 
       return to_route('admin.banners')->with('message', 'Record Updated Successfully');

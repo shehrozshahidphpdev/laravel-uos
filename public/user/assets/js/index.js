@@ -114,3 +114,27 @@ $(document).ready(function () {
     });
   });
 });
+
+// CHAIRMAN PAGE JS
+const publicationTab = document.querySelector(".hero-navigation__item-1");
+const cvTab = document.querySelector(".hero-navigation__item-2");
+const sosSection = document.querySelector(".sos");
+const cvSection = document.querySelector(".cv");
+
+// Default: show Publications first
+sosSection.classList.add("active");
+publicationTab.classList.add("active");
+
+publicationTab.addEventListener("click", () => {
+  sosSection.classList.add("active");
+  cvSection.classList.remove("active");
+  publicationTab.classList.add("active");
+  cvTab.classList.remove("active");
+});
+
+cvTab.addEventListener("click", () => {
+  cvSection.classList.add("active");
+  sosSection.classList.remove("active");
+  cvTab.classList.add("active");
+  publicationTab.classList.remove("active");
+});

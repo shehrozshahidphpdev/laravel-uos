@@ -11,4 +11,15 @@ class Department extends Model
   protected $casts = [
     'offered_courses' => 'array',
   ];
+
+  public function chairmanProfile()
+  {
+    return $this->hasOne(ChairmanProfile::class);
+  }
+
+
+  public function reserachPublication()
+  {
+    return $this->hasOne(ResearchPublication::class);
+  }
 }

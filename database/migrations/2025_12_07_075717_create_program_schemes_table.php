@@ -21,6 +21,7 @@ return new class extends Migration
         ->onUpdate('cascade');
       $table->string('program_title');
       $table->json('courses');
+      $table->string('category');
       $table->timestamps();
     });
   }

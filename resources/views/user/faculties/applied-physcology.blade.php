@@ -99,11 +99,14 @@
 
         <aside class="navigation">
           <ul class="navigation__list">
-            <li class="navigation__item"><a href="#" class="navigation__link">Department</a></li>
-            <li class="navigation__item"><a href="#" class="navigation__link">Chairman</a></li>
-            <li class="navigation__item"><a href="#" class="navigation__link">Faculty</a></li>
-            <li class="navigation__item"><a href="#" class="navigation__link">Research Group</a></li>
-            <li class="navigation__item"><a href="#" class="navigation__link">Fee Structure</a></li>
+            <li class="navigation__item"><a href="{{ route('user.department.departmentPage', 'computer-science') }}"
+                class="navigation__link">Department</a></li>
+            <li class="navigation__item"><a href="{{ route('user.department.chairmanPage', $slug) }}"
+                class="navigation__link">Chairman</a></li>
+            <li class="navigation__item"><a href="{{ route('user.department.departmentFaculty', $slug) }}"
+                class="navigation__link">Faculty</a></li>
+            <li class="navigation__item"><a href="{{ route('user.department.fee-structure', $slug) }}"
+                class="navigation__link">Fee Structure</a></li>
           </ul>
         </aside>
       </div>

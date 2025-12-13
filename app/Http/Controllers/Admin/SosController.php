@@ -56,6 +56,7 @@ class SosController extends Controller
     $request->validate([
       'subject_id' => 'required',
       'program_title' => 'required',
+      'category' => 'required',
     ], [
       'subject_id.required' => 'Please Select a table first'
     ]);
@@ -65,6 +66,7 @@ class SosController extends Controller
         'subject_id' => $request->subject_id,
         'program_title' => ucwords($request->program_title),
         'courses' => $request->courses,
+        'category' => $request->category
       ]);
 
       return to_route('admin.sos.index')
@@ -119,6 +121,7 @@ class SosController extends Controller
     $request->validate([
       'subject_id' => 'required',
       'program_title' => 'required',
+      'category' => 'required'
     ], [
       'subject_id.required' => 'Please Select a table first'
     ]);
@@ -128,6 +131,7 @@ class SosController extends Controller
         'subject_id' => $request->subject_id,
         'program_title' => $request->program_title,
         'courses' => $request->courses,
+        'category' => $request->category
       ]);
 
       return to_route('admin.sos.index')

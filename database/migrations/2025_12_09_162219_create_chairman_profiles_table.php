@@ -19,7 +19,12 @@ return new class extends Migration
       $table->longText('qualification');
       $table->string('specialization');
       $table->string('email')->unique();
-      $table->string('page')->unique();
+      $table->unsignedBigInteger('dept_id');
+      $table->foreign('dept_id')
+        ->references('id')
+        ->on('departments')
+        ->onDelete('cascade')
+        ->onUpdate('cascade');
       $table->timestamps();
     });
   }

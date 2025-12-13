@@ -24,6 +24,17 @@
             <x-admin.show-errors />
             <x-base-form action="{{ route('admin.sos.update', $scheme->id) }}" method="PUT">
               <div class="card-body">
+
+                <div class="row">
+                  <div class="mb-3 col">
+                    <label for="program_title" class="form-label">Table Title<< /label> <span
+                          class="text-danger">*</span>
+                        <input type="text" name="program_title" class="form-control" placeholder="Enter Program Title"
+                          value="{{ old('program_title', $scheme->program_title) }}" />
+
+                  </div>
+                </div>
+
                 <div class="row">
                   <div class="mb-3 col">
                     <label for="table" class="form-label"> subject</label> <span class="text-danger">*</span>
@@ -35,16 +46,21 @@
                         </option>
                       @endforeach
                     </select>
-
                   </div>
-
                   <div class="mb-3 col">
-                    <label for="program_title" class="form-label"> Program Title</label> <span
-                      class="text-danger">*</span>
-                    <input type="text" name="program_title" class="form-control" placeholder="Enter Program Title"
-                      value="{{ old('program_title', $scheme->program_title) }}" />
+                    <label class="form-label">Category</label> <span class="text-danger">*</span>
+                    <select name="category" class="form-select">
+                      <option value="" disabled>Select a category</option>
 
+                      <option value="fee-structure" {{ old('category', $scheme->category) == 'fee-structure' ? 'selected' : '' }}>
+                        Fee Structure
+                      </option>
+                      <option value="sos" {{ old('category', $scheme->category) == 'sos' ? 'selected' : '' }}>
+                        Scheme of Studies
+                      </option>
+                    </select>
                   </div>
+
                 </div>
 
                 <div class="row">
@@ -112,14 +128,14 @@
           let container = $("#semester-" + semester + "-group");
 
           container.append(`
-                                                                                        <div class="input-group mb-2">
-                                                                                            <input type="text" name="courses[semester_${semester}][]" class="form-control"
-                                                                                                placeholder="Enter course name..." />
-                                                                                            <button class="btn btn-sm btn-danger remove-course">
-                                                                                                <i class="bi bi-trash"></i>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                    `);
+                                                                                                              <div class="input-group mb-2">
+                                                                                                                  <input type="text" name="courses[semester_${semester}][]" class="form-control"
+                                                                                                                      placeholder="Enter course name..." />
+                                                                                                                  <button class="btn btn-sm btn-danger remove-course">
+                                                                                                                      <i class="bi bi-trash"></i>
+                                                                                                                  </button>
+                                                                                                              </div>
+                                                                                                          `);
         });
 
         // REMOVE COURSE FIELD

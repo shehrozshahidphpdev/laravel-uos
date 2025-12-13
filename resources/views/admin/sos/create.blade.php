@@ -26,6 +26,13 @@
               <div class="card-body">
                 <div class="row">
                   <div class="mb-3 col">
+                    <label for="program_title" class="form-label">Table Title</label> <span class="text-danger">*</span>
+                    <input type="text" name="program_title" class="form-control" placeholder="Enter Program Title" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="mb-3 col">
                     <label for="table" class="form-label"> subject</label> <span class="text-danger">*</span>
                     <select name="subject_id" class="form-select">
                       <option value="" selected disabled>Select a Subject</option>
@@ -36,15 +43,17 @@
                   </div>
 
                   <div class="mb-3 col">
-                    <label for="program_title" class="form-label"> Program Title</label> <span
-                      class="text-danger">*</span>
-                    <input type="text" name="program_title" class="form-control" placeholder="Enter Program Title" />
+                    <label for="table" class="form-label"> Category</label> <span class="text-danger">*</span>
+                    <select name="category" class="form-select">
+                      <option value="" selected disabled>Select a category</option>
+                      <option value="fee-structure">Fee Structure</option>
+                      <option value="sos">Scheme of Studeies</option>
+                    </select>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-12">
-
                     @for ($i = 1; $i <= 8; $i++)
                       <div class="card mb-3 border-primary">
                         <div class="card-header bg-primary text-white">
@@ -92,14 +101,14 @@
           let container = $("#semester-" + semester + "-group");
 
           container.append(`
-                                                    <div class="input-group mb-2">
-                                                        <input type="text" name="courses[semester_${semester}][]" class="form-control"
-                                                            placeholder="Enter course name..." />
-                                                        <button class="btn btn-sm btn-danger remove-course">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </div>
-                                                `);
+                                                                                    <div class="input-group mb-2">
+                                                                                        <input type="text" name="courses[semester_${semester}][]" class="form-control"
+                                                                                            placeholder="Enter course name..." />
+                                                                                        <button class="btn btn-sm btn-danger remove-course">
+                                                                                            <i class="bi bi-trash"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                `);
         });
 
         // REMOVE COURSE FIELD

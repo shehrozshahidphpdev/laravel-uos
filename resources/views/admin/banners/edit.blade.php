@@ -28,6 +28,13 @@
                       class="mt-2" />
                   </div>
                   <div class="mb-3 col">
+                    <label for="slug" class="form-label">slug</label>
+                    <input type="text" class="form-control" id="slug" name="slug"
+                      value="{{ old('slug', $banner->slug) }}" placeholder="e.g Latest News" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="mb-3 col">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title"
                       value="{{ old('title', $banner->title) }}" placeholder="e.g Latest News" />

@@ -1,10 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\OricTeam;
+
+/*
+|--------------------------------------------------------------------------
+| User Controllers
+|--------------------------------------------------------------------------
+*/
+
 use App\Http\Controllers\User\QecController;
+use App\Http\Controllers\User\StudentController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\NewsController as UserNews;
+use App\Http\Controllers\User\AdministrationController as UserAdministration;
+use App\Http\Controllers\User\EventController as UserEvents;
+use App\Http\Controllers\User\DirectorateController as UserDirectorateController;
+use App\Http\Controllers\User\FacultyController;
 use App\Http\Controllers\User\OricController;
+
+/*
+|--------------------------------------------------------------------------
+| Admin Controllers
+|--------------------------------------------------------------------------
+*/
+
+use App\Http\Controllers\Admin\SosController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\EventController;
@@ -12,29 +32,67 @@ use App\Http\Controllers\Admin\MeritController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\EditorController;
-use App\Http\Controllers\User\FacultyController;
-use App\Http\Controllers\User\StudentController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\OricTeamController;
 use App\Http\Controllers\Admin\TableRowController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\TableColumnController;
+use App\Http\Controllers\Admin\ChairmanProfileController;
+use App\Http\Controllers\Admin\FacultyProfileController;
 use App\Http\Controllers\Admin\OricPublicationController;
-use App\Http\Controllers\Admin\ProgramController;
-use App\Http\Controllers\Admin\SosController;
-use App\Http\Controllers\User\NewsController as UserNews;
-use App\Http\Controllers\User\EventController as UserEvents;
-use App\Http\Controllers\User\AdministrationController as UserAdministration;
-use App\Http\Controllers\User\DirectorateController as UserDirectorateController;
+use App\Http\Controllers\Admin\ResearchPublicationController;
 
-// USER SIDE ROUTES
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::name('user.')->group(function () {
-  Route::get('/', [HomeController::class, 'index'])
-    ->name('home');
-  Route::get('/contact', [HomeController::class, 'contact'])
-    ->name('contact');
+  Route::controller(HomeController::class)
+    ->group(function () {
+      Route::get('/',  'index')
+        ->name('home');
+      Route::get('/contact',  'contact')
+        ->name('contact');
+      Route::get('introduction',  'introduction')
+        ->name('introduction');
+      Route::get('chancellor-message',  'chancellorMessage')
+        ->name('chancellor-message');
+
+      Route::get('vc-message',  'vcMessage')
+        ->name('vc-message');
+      Route::get('chancellor-message',  'chancellorMessage')
+        ->name('chancellor-message');
+      Route::get('uni-map',  'uniMap')
+        ->name('uni-map');
+      Route::get('newsletter',  'newsLetter')
+        ->name('news-letter');
+      Route::get('merit-list',  'meritList')
+        ->name('merit-list');
+
+      Route::get('notifications',  'notifications')
+        ->name('notifications');
+      Route::get('dsa-downloads',  'dsaDownloads')
+        ->name('dsa-downloads');
+      Route::get('notifications',  'notifications')
+        ->name('notifications');
+
+
+      Route::get('prospectus',  'prospectus')
+        ->name('prospectus');
+
+
+      Route::get('how-to-apply',  'apply')
+        ->name('apply');
+
+      Route::get('academics',  'academics')
+        ->name('academics');
+    });
+
   Route::get('news/{slug}', [UserNews::class, 'showNews'])
     ->name('show-news');
   Route::get('news', [UserNews::class, 'news'])
@@ -43,27 +101,7 @@ Route::name('user.')->group(function () {
     ->name('events');
   Route::get('event/{slug}', [UserEvents::class, 'showEvent'])
     ->name('show-event');
-  Route::get('introduction', [HomeController::class, 'introduction'])
-    ->name('introduction');
-  Route::get('chancellor-message', [HomeController::class, 'chancellorMessage'])
-    ->name('chancellor-message');
 
-  Route::get('vc-message', [HomeController::class, 'vcMessage'])
-    ->name('vc-message');
-  Route::get('chancellor-message', [HomeController::class, 'chancellorMessage'])
-    ->name('chancellor-message');
-  Route::get('uni-map', [HomeController::class, 'uniMap'])
-    ->name('uni-map');
-  Route::get('newsletter', [HomeController::class, 'newsLetter'])
-    ->name('news-letter');
-  Route::get('merit-list', [HomeController::class, 'meritList'])
-    ->name('merit-list');
-
-  Route::get('notifications', [HomeController::class, 'notifications'])
-    ->name('notifications');
-
-  Route::get('academics', [HomeController::class, 'academics'])
-    ->name('academics');
 
   Route::get('qec', [QecController::class, 'qec'])
     ->name('qec');
@@ -71,19 +109,6 @@ Route::name('user.')->group(function () {
   Route::get('qec-team', [QecController::class, 'qecTeam'])
     ->name('qecteam');
 
-
-  Route::get('dsa-downloads', [HomeController::class, 'dsaDownloads'])
-    ->name('dsa-downloads');
-  Route::get('notifications', [HomeController::class, 'notifications'])
-    ->name('notifications');
-
-
-  Route::get('prospectus', [HomeController::class, 'prospectus'])
-    ->name('prospectus');
-
-
-  Route::get('how-to-apply', [HomeController::class, 'apply'])
-    ->name('apply');
 
   // students module
   Route::controller(StudentController::class)->group(function () {
@@ -115,7 +140,24 @@ Route::name('user.')->group(function () {
         ->name('departmentPage');
     });
 
+  // CHAIRMAN ROUTE
+  Route::controller(FacultyController::class)
+    ->group(function () {
+      Route::get('depart/{slug}', 'departmentPage')
+        ->name('department.departmentPage');
 
+      Route::get('depart-hod/{slug}', 'chairmanPage')
+        ->name('department.chairmanPage');
+
+      Route::get('depart-fee/{slug}', 'FeeStructure')
+        ->name('department.fee-structure');
+
+      Route::get('depart-faculty/{slug}', 'departmentFaculty')
+        ->name('department.departmentFaculty');
+
+      Route::get('depart-faculty/{slug}/{id}', 'showFaculty')
+        ->name('department.showFaculty');
+    });
 
   Route::controller(OricController::class)->group(function () {
     Route::get('oric',  'oric')
@@ -184,6 +226,12 @@ Route::name('user.')->group(function () {
         ->name('sustainability');
     });
 });
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+
 // Auth Routes
 Route::prefix('admin/')
   ->controller(AuthController::class)
@@ -457,8 +505,9 @@ Route::prefix('admin/')
     Route::resource('downloads', DownloadController::class);
     Route::resource('sos', SosController::class);
     Route::resource('programs', ProgramController::class);
+    Route::resource('faculty-profiles', FacultyProfileController::class);
+    Route::resource('research-publications', ResearchPublicationController::class);
   });
-
 
 Route::fallback(function () {
   return view('404');

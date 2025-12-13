@@ -23,7 +23,7 @@
         data-accordion="false" id="navigation">
 
         <li class="nav-item">
-          <a href="{{ route('admin.profile') }}" class="nav-link">
+          <a href="{{ route('admin.dashboard') }}" class="nav-link">
             <i class="fa-solid fa-home"></i>
             <p>Home</p>
           </a>
@@ -90,11 +90,28 @@
           </a>
         </li>
 
+        {{-- Faculty profiles --}}
+        <li class="nav-item">
+          <a href="{{ route('admin.faculty-profiles.index') }}" class="nav-link">
+            <i class="fa-brands fa-black-tie"></i>
+            <p>Faculty Profile</p>
+          </a>
+        </li>
+
+
+        {{-- reserach publications--}}
+        <li class="nav-item">
+          <a href="{{ route('admin.research-publications.index') }}" class="nav-link">
+            <i class="fa-solid fa-flask"></i>
+            <p>Reserach Publications</p>
+          </a>
+        </li>
+
         {{-- sos --}}
         <li class="nav-item">
           <a href="{{ route('admin.sos.index') }}" class="nav-link">
             <i class="fa-solid fa-graduation-cap"></i>
-            <p>SOS</p>
+            <p>SOS & Fee Structure</p>
           </a>
         </li>
 
@@ -175,7 +192,7 @@
           </ul>
         </li>
 
-        <li class="nav-header">EXAMPLES</li>
+        {{-- <li class="nav-header">EXAMPLES</li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon bi bi-box-arrow-in-right"></i>
@@ -238,7 +255,7 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> --}}
       </ul>
       <!--end::Sidebar Menu-->
     </nav>
